@@ -67,14 +67,12 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.x -= xspeed;
-				while(!wall.hitBox.intersects(hitBox))
-				{
-					hitBox.x += Math.signum(xspeed);
+				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
 					hitBox.x -= Math.signum(xspeed);
 					xspeed = 0;
 					x = hitBox.x;
 					
-				}
+				
 			}
 		}
 		
@@ -86,14 +84,12 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.y -= yspeed;
-				while(!wall.hitBox.intersects(hitBox))
-				{
-					hitBox.y += Math.signum(yspeed);
+				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);					
 					hitBox.y -= Math.signum(yspeed);
 					yspeed = 0;
 					y = hitBox.y;
 					
-				}
+				
 			}
 		}
 

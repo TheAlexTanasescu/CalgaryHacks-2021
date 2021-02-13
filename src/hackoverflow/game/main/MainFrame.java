@@ -1,4 +1,4 @@
-package hackoverflow.game.main;
+ package hackoverflow.game.main;
 import java.awt.Color;
 
 public class MainFrame extends javax.swing.JFrame {

@@ -33,7 +33,9 @@ public class Player {
 	}
 	
 	public void set() {
-		if (keyLeft && keyRight || !keyLeft && !keyRight) xspeed *= 0.8;
+		if (keyLeft && keyRight || !keyLeft && !keyRight) {
+			xspeed = 0.5;
+		}
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		

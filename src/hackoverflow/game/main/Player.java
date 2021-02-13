@@ -37,6 +37,20 @@ public class Player {
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		
+		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
+		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
+		
+		if (xspeed > 7) xspeed = 7;
+		if (xspeed < -7) xspeed = -7;
+		
+		if (keyUp) {
+			
+			//Check if touching ground
+			yspeed = -6;
+			
+		}		
+		yspeed += 0.3;
+
 		
 		x += xspeed;
 		y += yspeed;

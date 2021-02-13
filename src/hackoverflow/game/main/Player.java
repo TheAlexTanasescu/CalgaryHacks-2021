@@ -46,13 +46,18 @@ public class Player {
 		if(keyUp) {
 			yspeed = -6;
 		}
-		//yspeed += 0.3;
+		yspeed += 0.3;
 		
 		x += xspeed;
 		y += yspeed;
 		
 		hitBox.x = x;
 		hitBox.y = y;
+		
+		//Code for death
+		if(y > 800) {
+			panel.reset();
+		}
 	}
 	
 	public void draw(Graphics2D gtd) {

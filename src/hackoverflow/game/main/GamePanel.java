@@ -16,6 +16,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	public GamePanel() {
 		
 		player = new Player(400, 300, this);
+		reset();
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
 
@@ -28,6 +29,16 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			}
 			
 		}, 0, 17);
+	}
+	
+	public void reset() {
+		player.x = 200;
+		player.y = 150;
+		player.xspeed = 0;
+		player.yspeed = 0;
+//		walls.clear();
+//		int offset = 50;
+//		makeWalls();
 	}
 	
 	public void paint(Graphics g) {

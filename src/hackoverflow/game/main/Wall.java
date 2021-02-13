@@ -5,6 +5,7 @@ import java.awt.*;
 public class Wall 
 {
 	int x, y, width, height;
+	int startX;
 	Rectangle hitBox;
 	
 	public Wall(int x, int y, int width, int height)
@@ -13,6 +14,7 @@ public class Wall
 		 this.y = y;
 		 this.height = height;
 		 this.width = width;
+		 startX = x;
 		 
 		 hitBox = new Rectangle(x, y, width, height);
 	}
@@ -24,5 +26,12 @@ public class Wall
 		gtd.setColor(Color.WHITE);
 		gtd.fillRect(x+1, y+1, width-2, height-2);
 		
+	}
+	
+	//Setting walls to move and hitbox
+	public int set(int cameraX) {
+		x = startX - cameraX;
+		hitBox.x = x;
+		return x;
 	}
 }

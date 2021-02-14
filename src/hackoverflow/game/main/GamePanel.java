@@ -39,19 +39,17 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	
 
 	public void makeWalls(int offset) {
-		for(int i = 50; i < 650; i += 50)
+		for(int i = 50; i < 1350; i += 50)
 		{
 			walls.add(new Wall(i, 600, 50, 50));
 		}
 		
 		walls.add(new Wall(50, 550, 50, 50));
 		walls.add(new Wall(50, 500, 50, 50));
-		walls.add(new Wall(50, 450, 50, 50));
+
+		walls.add(new Wall(600, 500, 50, 50));		
 		walls.add(new Wall(600, 550, 50, 50));
-//		walls.add(new Wall(600, 500, 50, 50));
-//		walls.add(new Wall(600, 450, 50, 50));
-//		walls.add(new Wall(50, 550, 50, 50));
-//		walls.add(new Wall(450, 550, 50, 50));
+		
 	}
 
 	public void reset() {

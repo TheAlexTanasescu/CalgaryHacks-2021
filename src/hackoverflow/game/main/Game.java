@@ -30,15 +30,6 @@ public class Game {
 		frame.setTitle("HackOverflow");
 		frame.setVisible(true);
 		ImagePane.main(args);
-		// ALL OF THE MUSIC TRACKS IN THE GAME
-		String REGULAR_TRACK = "res/regular.wav";
-		String FIGHT_TRACK = "res/FIGHT.wav";
-		String MENU_TRACK = "res/menu.wav";
-		String GET_HIT_TRACK = "res/get_hit.wav";
-		String DEATH_TRACK = "res/death.wav";
-		String GAMEOVER_TRACK = "res/lose.wav";
-		String WIN_TRACK = "res/winn.wav";
-		String WACK_TRACK = "res/wack.wav";
 		
 		
 		
@@ -50,10 +41,8 @@ public class Game {
 		
 		
 		
-		// music object used to play the music
-		musictime musicObject = new musictime();
-		// start the music
-		musicObject.PlayMusicLoop(REGULAR_TRACK);
+		
+		
 		
 		
 		

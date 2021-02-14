@@ -61,11 +61,11 @@ public class Player {
 
 		if (keyUp)
 		{
-			hitBox.y ++;
+			hitBox.y = hitBox.y + 2;
 			
 			for (Wall wall: panel.walls)
 			{
-				if (wall.hitBox.intersects(hitBox)) yspeed = -6;
+				if (wall.hitBox.intersects(hitBox)) yspeed = -8;
 			}
 			hitBox.y --;
 		}

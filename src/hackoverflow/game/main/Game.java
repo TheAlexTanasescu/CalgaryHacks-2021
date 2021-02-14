@@ -47,22 +47,6 @@ public class Game {
 		frame.setVisible(true);
 		ImagePane.main(args);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		//OptionPaneExample.main(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

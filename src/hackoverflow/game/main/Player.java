@@ -68,11 +68,11 @@ public class Player {
 
 		if (keyUp)
 		{
-			hitBox.y ++;
+			hitBox.y = hitBox.y + 2;
 			
 			for (Wall wall: panel.walls)
 			{
-				if (wall.hitBox.intersects(hitBox)) yspeed = -6;
+				if (wall.hitBox.intersects(hitBox)) yspeed = -8;
 			}
 			hitBox.y --;
 		}
@@ -87,11 +87,19 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.x -= xspeed;
+				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+
 				while(!wall.hitBox.intersects(hitBox))
 					hitBox.x += Math.signum(xspeed);
+
+					hitBox.x -= Math.signum(xspeed);
+					xspeed = 0;
+					x = hitBox.x;
+
           hitBox.x -= Math.signum(xspeed);
           xspeed = 0;
           x = hitBox.x;
+
 			}
 		}
 		
@@ -108,6 +116,7 @@ public class Player {
 					hitBox.y -= Math.signum(yspeed);
 					yspeed = 0;
 					y = hitBox.y;
+
 			}
 		}
 

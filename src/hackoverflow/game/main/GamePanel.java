@@ -2,12 +2,17 @@
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
@@ -16,12 +21,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
+	ImageIcon lvl1Png;
 	
 	public GamePanel() {
 		
 		player = new Player(100, 400, this);
 		
-
 		reset(); //Intitalize walls with reset for ease
 
 		gameTimer = new Timer();
@@ -89,6 +94,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		Graphics2D gtd = (Graphics2D) g;
 		
 		player.draw(gtd);
+		
 		for(Wall wall: walls) wall.draw(gtd);
 	}
 	

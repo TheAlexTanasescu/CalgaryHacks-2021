@@ -20,14 +20,14 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 		player = new Player(100, 400, this);
 		
+
 		reset(); //Intitalize walls with reset for ease
 
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
 
 			@Override
-			public void run() {
-				
+			public void run() {			
 				player.set();
 				for(Wall wall : walls) wall.set(cameraX);
 				repaint();
@@ -72,11 +72,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
 
 	public void reset() {
-		player.x = 100;
-		player.y = 500;
-		cameraX = 0;
-		player.xspeed = 0;
-		player.yspeed = 0;
+		cameraX = 150;
 		walls.clear();
 		int offset = 50;
 		makeWalls(offset); //Create walls every reset so they don't stack up each time

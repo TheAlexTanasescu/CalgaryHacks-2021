@@ -1,5 +1,6 @@
 package GameMob;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -13,6 +14,7 @@ public abstract class Mob {
 	
 	// amount of health a mob has
 	protected int hp;
+	protected int maxHp;
 	protected boolean isAlive;
 	
 	// running speed of the mob
@@ -51,7 +53,8 @@ public abstract class Mob {
 		this.x = startX;
 		this.y = startY;
 		this.startX = startX;
-		this.hp = health;
+		this.maxHp = health;
+		hp = maxHp;
 		this.xOffset = 0;
 		
 		isAlive = true;
@@ -91,7 +94,16 @@ public abstract class Mob {
 	}
 	
 	public void draw(Graphics2D gtd) {
-		if (isAlive) lblMob.getIcon().paintIcon(panel, gtd, x, y);
+		if (isAlive) {
+			lblMob.getIcon().paintIcon(panel, gtd, x, y);
+			
+			// Hp Bar
+			gtd.setColor(Color.black);
+		    gtd.fillRect(x, y, width, 5);
+		    gtd.setColor(Color.red);
+		    System.out.println("hp: " + hp);
+		    gtd.fillRect(x, y, (width * hp) / maxHp, 5);
+		}
 	}
 
 	//Checks for y collisions on objects

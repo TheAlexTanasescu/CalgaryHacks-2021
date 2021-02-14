@@ -16,6 +16,16 @@ public class Game {
 
 
 	public static void main(String[] args) {
+		StartFrame startFrame = new StartFrame();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		startFrame.setSize(1280, 720);
+		startFrame.setLocation((int)(screenSize.getWidth()/2 - startFrame.getSize().getWidth()/2), (int)(screenSize.getHeight()/2 - startFrame.getSize().getHeight()/2));
+		startFrame.setResizable(false);
+		startFrame.setTitle("HackOverflow");
+		startFrame.setVisible(true);
+		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		while (!startFrame.isFinished()) System.out.print("");;
 		MainFrame frame = new MainFrame();
 		// the icon image for the game
 		ImageIcon Icon = new ImageIcon("res/GameIcon.png");;
@@ -23,7 +33,7 @@ public class Game {
 		frame.setIconImage(Icon.getImage());
 		
 		frame.setSize(1280, 720);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
 		frame.setLocation((int)(screenSize.getWidth()/2 - frame.getSize().getWidth()/2), (int)(screenSize.getHeight()/2 - frame.getSize().getHeight()/2));
 		
 		frame.setResizable(false);

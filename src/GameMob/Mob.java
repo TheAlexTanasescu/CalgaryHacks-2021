@@ -7,38 +7,52 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import hackoverflow.game.main.GamePanel;
+import hackoverflow.game.main.Wall;
 
 public abstract class Mob {
 	
 	// amount of health a mob has
-	private int Health;
+	protected int hp;
+	protected boolean isAlive;
 	
 	// running speed of the mob
-	private double xspeed;
-	private double yspeed;
+	protected double xspeed;
+	protected double yspeed;
 	
 	//  0 = friendly  1 = neutral  2 = hostile
-	private int hostility;
+	protected int hostility;
 	
-	private GamePanel panel;
-	private String mobName;
-	private JLabel lblMob;
-	private JLabel lblMobName;
-	private ImageIcon mobIcon;
+	protected GamePanel panel;
+	protected String mobName;
+	protected JLabel lblMob;
+	protected JLabel lblMobName;
+	protected ImageIcon mobIcon;
 	
-	private int x;
-	private int y;
-	private int width;
-	private int height;
-	private Rectangle hitBox;
+	protected int startX;
+	protected int xOffset;
+	
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
+	public Rectangle hitBox;
+	
+	//Timer stuff
+	protected int timer;
+	protected int sTime;
 	
 	
-	// to init a mob
-	public Mob(String name, int x, int y, GamePanel panel, String mobImgPath) {
+	// Initialize Mob
+	public Mob(String name, int health, int startX, int startY, GamePanel panel, String mobImgPath) {
 		this.panel = panel;
-		this.x = x;
-		this.y = y;
+		this.x = startX;
+		this.y = startY;
+		this.startX = startX;
+		this.hp = health;
+		this.xOffset = 0;
 		
+		isAlive = true;
+		timer = 0; // timer to create movement patterns
 		mobName = name;
 		lblMobName = new JLabel(mobName);
 		mobIcon = new ImageIcon(mobImgPath);
@@ -50,14 +64,62 @@ public abstract class Mob {
 		hitBox = new Rectangle(x, y, width, height);
 	}
 	
-	private void setMobIcon() {
-		
+	//Sets mob movement patterns
+	public void set(int cameraX) {
+		x = startX - cameraX;
+		hitBox.x = x;
+	}
+	
+	private void destroyMob() {
+		isAlive = false;
+		lblMob.setVisible(false);
+	}
+	
+	public void hit() {
+		hp --;
+		if (hp <= 0) {
+			destroyMob();
+		}
+	}
+	
+	public boolean isAlive() {
+		return isAlive;
 	}
 	
 	public void draw(Graphics2D gtd) {
-		lblMob.getIcon().paintIcon(panel, gtd, x, y);
+		if (isAlive) lblMob.getIcon().paintIcon(panel, gtd, x, y);
 	}
 
+	//Checks for y collisions on objects
+	protected void collisionCheckX() {
+		for (Wall wall : panel.walls)
+		{
+			if(hitBox.intersects(wall.hitBox))
+			{
+				hitBox.x -= xspeed;
+				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+				hitBox.x -= Math.signum(xspeed);
+				xspeed = 0;
+				x = hitBox.x;
+
+			}
+		}
+	}
+		
+	//Checks for x collisions on objects
+	protected void collisionCheckY() {
+		for (Wall wall : panel.walls) {
+			if(hitBox.intersects(wall.hitBox))
+			{
+				hitBox.y -= yspeed;
+				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);
+				hitBox.y -= Math.signum(yspeed);
+				yspeed = 0;
+				y = hitBox.y;
+
+			}
+		}
+	}
 }
 
 

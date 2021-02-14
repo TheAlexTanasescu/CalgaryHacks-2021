@@ -6,7 +6,7 @@ public class Wall
 {
 	int x, y, width, height;
 	int startX;
-	Rectangle hitBox;
+	public Rectangle hitBox;
 	
 	public Wall(int x, int y, int width, int height)
 	{
@@ -31,9 +31,8 @@ public class Wall
 	}
 	
 	//Setting walls to move and hitbox
-	public int set(int cameraX) {
+	public void set(int cameraX) {
 		x = startX - cameraX;
 		hitBox.x = x;
-		return x;
 	}
 }

@@ -24,9 +24,12 @@ public abstract class Mob {
 	
 	protected GamePanel panel;
 	protected String mobName;
+	
+	//Mob Image stuff
 	protected JLabel lblMob;
 	protected JLabel lblMobName;
-	protected ImageIcon mobIcon;
+	protected ImageIcon mobIconR;
+	protected ImageIcon mobIconL;
 	
 	protected int startX;
 	protected int xOffset;
@@ -43,7 +46,7 @@ public abstract class Mob {
 	
 	
 	// Initialize Mob
-	public Mob(String name, int health, int startX, int startY, GamePanel panel, String mobImgPath) {
+	public Mob(String name, int health, int startX, int startY, GamePanel panel, String mobImgPathRight, String mobImgPathLeft) {
 		this.panel = panel;
 		this.x = startX;
 		this.y = startY;
@@ -55,11 +58,12 @@ public abstract class Mob {
 		timer = 0; // timer to create movement patterns
 		mobName = name;
 		lblMobName = new JLabel(mobName);
-		mobIcon = new ImageIcon(mobImgPath);
-		lblMob = new JLabel(mobIcon);
+		mobIconR = new ImageIcon(mobImgPathRight);
+		mobIconL = new ImageIcon(mobImgPathLeft);
+		lblMob = new JLabel(mobIconR);
 		
-		width = mobIcon.getIconWidth();
-		height = mobIcon.getIconHeight();
+		width = mobIconR.getIconWidth();
+		height = mobIconR.getIconHeight();
 		
 		hitBox = new Rectangle(x, y, width, height);
 	}

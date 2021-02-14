@@ -6,9 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 
 

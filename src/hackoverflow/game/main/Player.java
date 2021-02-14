@@ -61,7 +61,7 @@ public class Player {
 
 		if (keyUp)
 		{
-			hitBox.y ++;
+			hitBox.y = hitBox.y + 2;
 			
 			for (Wall wall: panel.walls)
 			{

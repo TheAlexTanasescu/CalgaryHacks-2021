@@ -44,7 +44,9 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		}
 		
 		for(int i = 50; i < 1400; i += 50) {
-			walls.add(new Wall(i, 350, 50, 50));
+			if(i != 1150) {
+				walls.add(new Wall(i, 350, 50, 50));
+			}
 		}
 		
 		for(int i = 50; i < 1400; i += 50) {

@@ -56,22 +56,6 @@ public class Game {
 				+ "\n"
 				, "Tutorial", args);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		//OptionPaneExample.main(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

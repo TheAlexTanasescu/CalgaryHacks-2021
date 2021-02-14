@@ -13,17 +13,14 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
 	ArrayList<Wall> walls = new ArrayList<>();
 	Player player;
+	int cameraX; //create camera
 	Timer gameTimer;
 	
 	public GamePanel() {
 		
 		player = new Player(400, 300, this);
-
 		
-		makeWalls();
-		
-
-		reset();
+		reset(); //Intitalize walls with reset for ease
 
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
@@ -32,6 +29,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			public void run() {
 				
 				player.set();
+				for(Wall wall : walls) wall.set(cameraX);
 				repaint();
 				
 			}
@@ -40,8 +38,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	}
 	
 
-	public void makeWalls() 
-	{
+	public void makeWalls(int offset) {
 		for(int i = 50; i < 650; i += 50)
 		{
 			walls.add(new Wall(i, 600, 50, 50));
@@ -51,19 +48,21 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		walls.add(new Wall(50, 500, 50, 50));
 		walls.add(new Wall(50, 450, 50, 50));
 		walls.add(new Wall(600, 550, 50, 50));
-		walls.add(new Wall(600, 500, 50, 50));
-		walls.add(new Wall(600, 450, 50, 50));
-		walls.add(new Wall(50, 550, 50, 50));
-		walls.add(new Wall(450, 550, 50, 50));
+//		walls.add(new Wall(600, 500, 50, 50));
+//		walls.add(new Wall(600, 450, 50, 50));
+//		walls.add(new Wall(50, 550, 50, 50));
+//		walls.add(new Wall(450, 550, 50, 50));
+	}
 
 	public void reset() {
 		player.x = 200;
 		player.y = 150;
+		cameraX = 150;
 		player.xspeed = 0;
 		player.yspeed = 0;
-//		walls.clear();
-//		int offset = 50;
-//		makeWalls();
+		walls.clear();
+		int offset = 50;
+		makeWalls(offset); //Create walls every reset so they don't stack up each time
 
 	}
 	

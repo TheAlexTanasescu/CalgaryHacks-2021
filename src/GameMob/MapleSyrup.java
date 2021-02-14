@@ -1,6 +1,7 @@
 package GameMob;
 
 import hackoverflow.game.main.GamePanel;
+import hackoverflow.game.main.ImagePane;
 
 public class MapleSyrup extends Mob {
 	
@@ -21,6 +22,7 @@ public class MapleSyrup extends Mob {
 	protected void destroyMob() {
 		super.destroyMob();
 		super.panel.player.obtainedMaple = true;
-		System.out.println("You have obtained Maple!");
+		ImagePane.main("How's it going, eh?\n"
+				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null);
 	}
 }

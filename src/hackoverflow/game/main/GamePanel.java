@@ -72,8 +72,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 		//Lvl 1 bear mob
 
-		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
-		mobs.add(new PolarBear("Bob", 20, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
+		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
 		
 	}
 	

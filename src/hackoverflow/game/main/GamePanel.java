@@ -2,12 +2,23 @@
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+
+import javax.swing.ImageIcon;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
@@ -16,17 +27,28 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
+	Image lvl1Png;
 	
 	public GamePanel() {
 		
 		player = new Player(600, 400, this);
-		
-
-		reset(); //Intitalize walls with reset for ease
+		try {
+			lvl1Png = ImageIO.read(new File("Hackathon 2021 Assets/BG.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		reset(); //Initialize walls with reset for ease
 
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
 
+			/*
+			protected void paintComponent(Graphics g) {
+			    super.paintComponent(g); // paint the background image and scale it to fill the entire space
+			    ImageIcon img = new ImageIcon("Hackathon 2021 Assets/BG.png");
+			    g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+			}
+			*/
 			@Override
 			public void run() {			
 				player.set();
@@ -64,7 +86,9 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		for(int i = -200; i < 600; i += 50) {
 			walls.add(new Wall(1350, i, 50, 50));
 		}
+
 		
+
 		//Obstacles floor 1
 		walls.add(new Wall(500, 550, 50, 50)); //small mound 1
 		walls.add(new Wall(550, 550, 50, 50)); //small mound 1
@@ -94,9 +118,18 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
+		
+		g.drawImage(lvl1Png, 0, 0, 1280, 720, null);
+
+		player.draw(gtd);
+		
 		for(Wall wall: walls) wall.draw(gtd);
+
+		for(Ladder ladder: ladders) ladder.draw(gtd);
+
 		for(Ladder ladder : ladders) ladder.draw(gtd);
 		player.draw(gtd);
+
 	}
 	
 

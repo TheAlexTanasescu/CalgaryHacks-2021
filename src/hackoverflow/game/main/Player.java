@@ -1,5 +1,4 @@
 package hackoverflow.game.main;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -186,10 +185,6 @@ public class Player {
 	}
 	
 	public void draw(Graphics2D gtd) {
-
-		//gtd.setColor(Color.GRAY);
-		//gtd.fillRect(x, y, width, height);
-
 		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
 	}
 }

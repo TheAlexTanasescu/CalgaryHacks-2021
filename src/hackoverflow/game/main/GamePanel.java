@@ -23,6 +23,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	public ArrayList<Wall> walls = new ArrayList<>();
 	ArrayList<Ladder> ladders = new ArrayList<>();
 	ArrayList<Mob> mobs = new ArrayList<>();
+	ArrayList<Icicle> icicles = new ArrayList<>();
+	
 	Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
@@ -54,6 +56,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 				for(Wall wall : walls) wall.set(cameraX);
 				for(Ladder ladder : ladders) ladder.set(cameraX);
 				for(Mob mob : mobs) mob.set(cameraX);
+				for(Icicle icicle : icicles) icicle.set(cameraX);
 				repaint();
 				
 			}
@@ -112,6 +115,13 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			ladders.add(new Ladder(150, i, 50, 50));
 		}
 	}
+	
+	public void makeIcicles(int offset) {		
+		for(int i = 250; i < 600; i += 50) {
+			icicles.add(new Icicle(i, 0, 50, 50));
+		}
+		
+	}
 
 
 	public void reset() {
@@ -120,6 +130,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		int offset = 50;
 		makeWalls(offset); //Create walls every reset so they don't stack up each time
 		makeLadders(offset); //Create walls every reset so they don't stack up each time
+		makeIcicles(offset);
 	}
 	
 	public void paint(Graphics g) {
@@ -135,6 +146,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		for(Wall wall: walls) wall.draw(gtd);
 		for(Ladder ladder: ladders) ladder.draw(gtd);
 		for(Mob mob: mobs) mob.draw(gtd);
+		for(Icicle icicle: icicles) icicle.draw(gtd);
 
 		player.draw(gtd);
 

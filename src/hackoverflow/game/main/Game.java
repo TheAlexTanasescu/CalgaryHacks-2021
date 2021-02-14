@@ -7,8 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import javamusicthing.MusicTime;
+
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import  javamusicthing.musictime;
 
 
 
@@ -17,7 +19,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		String MENU_TRACK = "res/menu.wav";
-		musictime MainMenu = new musictime();
+		MusicTime MainMenu = new MusicTime();
 		
 		StartFrame startFrame = new StartFrame();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

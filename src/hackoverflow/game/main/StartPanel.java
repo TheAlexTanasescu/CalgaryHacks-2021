@@ -45,7 +45,7 @@ public class StartPanel  extends javax.swing.JPanel {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
 		
-		g.drawImage(background, 0, 0, 1280, 720, null);
+		gtd.drawImage(background, 0, 0, 1280, 720, null);
 
 
 	}

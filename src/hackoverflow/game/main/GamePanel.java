@@ -55,7 +55,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			*/
 			@Override
 			public void run() {		
-				DialogExample.main(null);
+				//DialogExample.main(null);
 				player.set();
 				for(Wall wall : walls) wall.set(cameraX);
 				for(Ladder ladder : ladders) ladder.set(cameraX);

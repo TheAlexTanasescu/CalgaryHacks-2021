@@ -1,14 +1,16 @@
 package hackoverflow.game.main;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
-public class Wall 
+public class Ladder 
 {
 	int x, y, width, height;
 	int startX;
 	Rectangle hitBox;
 	
-	public Wall(int x, int y, int width, int height)
+	public Ladder(int x, int y, int width, int height)
 	{
 		 this.x = x;
 		 this.y = y;
@@ -21,16 +23,13 @@ public class Wall
 	
 	public void draw(Graphics2D gtd)
 	{
-		gtd.setColor(Color.BLACK);
+		gtd.setColor(Color.ORANGE);
 		gtd.drawRect(x, y, width, height);
 		gtd.setColor(Color.cyan);
 		gtd.fillRect(x+1, y+1, width-2, height-2);
 		
-		
-		
 	}
 	
-	//Setting walls to move and hitbox
 	public int set(int cameraX) {
 		x = startX - cameraX;
 		hitBox.x = x;

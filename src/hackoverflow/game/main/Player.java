@@ -1,4 +1,5 @@
 package hackoverflow.game.main;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -7,41 +8,53 @@ import javax.swing.JLabel;
 
 public class Player {
 
-	GamePanel panel;
-	int x;
-	int y;
-	int width;
-	int height;
+	private GamePanel panel;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	private int timer;
 	
-	double xspeed;
-	double yspeed;
+	private double xspeed;
+	private double yspeed;
 	
-	Rectangle hitBox;
-	boolean keyLeft;
-	boolean keyRight;
-	boolean keyUp;
-	boolean keyDown;
+	private Rectangle hitBox;
+	public boolean keyLeft;
+	public boolean keyRight;
+	public boolean keyUp;
+	public boolean keyDown;
 	
 	//Image stuff
-	ImageIcon player;
-	JLabel lblPlayer;
+	private JLabel lblPlayer;
+	private ImageIcon player0;
+	private ImageIcon player1;
+	private ImageIcon player2;
+	private ImageIcon player0l;
+	private ImageIcon player1l;
+	private ImageIcon player2l;
 	
 	public Player(int x, int y, GamePanel panel) {
 		
 		this.panel = panel;
 		this.x = x;
 		this.y = y;
+		timer = 0;
 		
 		width = 50;
 		height = 100;
 		
-		//hitBox = new Rectangle(x, y, width, height);
-		
 		//Image stuff
-		player = new ImageIcon("res/player0.png");
-		lblPlayer = new JLabel(player);     
-        width = player.getIconWidth();
-        height = player.getIconHeight();
+		player0 = new ImageIcon("res/player0.png");
+		player1 = new ImageIcon("res/player1.png");
+		player2 = new ImageIcon("res/player2.png");
+		player0l = new ImageIcon("res/player0left.png");
+		player1l = new ImageIcon("res/player1left.png");
+		player2l = new ImageIcon("res/player2left.png");
+		
+		lblPlayer = new JLabel(player0);
+		
+        width = player0.getIconWidth();
+        height = player0.getIconHeight();
         
         hitBox = new Rectangle(x, y, width, height);
 	}
@@ -51,12 +64,13 @@ public class Player {
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		
-		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
+		//Timer
+		timer ++;
+		setPlayerIcon();
 		
+		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
-
 		if (xspeed > 7) xspeed = 7;
-
 		if (xspeed < -7) xspeed = -7;
 
 		if (keyUp)
@@ -104,13 +118,11 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.y -= yspeed;
-				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);					
-
-
+				while(!wall.hitBox.intersects(hitBox))
+					hitBox.y += Math.signum(yspeed);
 					hitBox.y -= Math.signum(yspeed);
 					yspeed = 0;
 					y = hitBox.y;
-
 
 			}
 		}
@@ -130,14 +142,48 @@ public class Player {
 		
 		//Code for death
 		if(y > 800) {
+			this.reset();
 			panel.reset();
 		}
 	}
 	
+	private void reset() {
+		x = 200;
+		y = 150;
+		xspeed = 0;
+		yspeed = 0;
+		panel.reset();
+	}
+	
+	//Changes the player image to imitate movement
+	private void setPlayerIcon() {
+		if (keyRight && keyLeft) {
+			return;
+		}
+		if (timer % 7 == 0) {
+			if (keyRight && !keyUp) {
+				if (lblPlayer.getIcon() == player0) lblPlayer.setIcon(player1);
+				else if (lblPlayer.getIcon() == player1) lblPlayer.setIcon(player2);
+				else if (lblPlayer.getIcon() == player2) lblPlayer.setIcon(player0);
+				else lblPlayer.setIcon(player0);
+			} else if (keyLeft && !keyUp) {
+				if (lblPlayer.getIcon() == player0l) lblPlayer.setIcon(player1l);
+				else if (lblPlayer.getIcon() == player1l) lblPlayer.setIcon(player2l);
+				else if (lblPlayer.getIcon() == player2l) lblPlayer.setIcon(player0l);
+				else lblPlayer.setIcon(player0l);
+			} else if (keyUp && keyLeft) {
+				lblPlayer.setIcon(player1l);
+			} else if (keyUp && keyRight) {
+				lblPlayer.setIcon(player1);
+			}
+		}
+	}
+	
 	public void draw(Graphics2D gtd) {
-		//gtd.setColor(Color.BLACK);
+
+		//gtd.setColor(Color.GRAY);
 		//gtd.fillRect(x, y, width, height);
+
 		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
-		
 	}
 }

@@ -1,4 +1,5 @@
 package hackoverflow.game.main;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -15,7 +16,13 @@ public class Player {
 	private int width;
 	private int height;
 	private int timer;
-
+	
+	private int hp;
+	private int maxHp;
+	
+	private int lives;
+	private boolean gameOver;
+	private JLabel lblHp;
 	
 	private double xspeed;
 	private double yspeed;
@@ -42,7 +49,10 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		timer = 0;
-		
+		maxHp = 20;
+		hp = maxHp;
+        lives = 3;
+        gameOver = false;
 		width = 50;
 		height = 100;
 		
@@ -55,10 +65,12 @@ public class Player {
 		player2l = new ImageIcon("res/player2left.png");
 		
 		lblPlayer = new JLabel(player0);
-		
+		lblHp = new JLabel("HP: " + hp);
+
         width = player0.getIconWidth();
         height = player0.getIconHeight();
 
+        
         
         hitBox = new Rectangle(x, y, width, height);
 	}
@@ -156,11 +168,23 @@ public class Player {
 					xspeed = 0;
 					x = hitBox.x;
 					mob.hit();
+					hp --;
 				}
 			}
 		}
 	}
 	
+	private void hit() {
+		hp --;
+		if (hp <= 0) {
+			loseLife();
+		}
+	}
+	
+	private void loseLife() {
+		lives --;
+		if (lives <= 0) gameOver = true;
+	}
 	//Checks for x collisions on objects
 	private void collisionCheckY() {
 		for (Wall wall : panel.walls) {
@@ -213,5 +237,10 @@ public class Player {
 	
 	public void draw(Graphics2D gtd) {
 		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
+		gtd.setColor(Color.black);
+	    gtd.fillRect(x, y, width, 5);
+	    gtd.setColor(Color.red);
+	    System.out.println("hp: " + hp);
+	    gtd.fillRect(x, y, (width * hp) / maxHp, 5);
 	}
 }

@@ -171,9 +171,17 @@ public GamePanel(int i) {
 		}
 		
 		for(int i = 50; i < 3000; i += 100) {
-			if(i != 1250 && i != 1450 && i != 1600) {
+			if(i != 1250 && i != 1450 && i != 2850 && i != 2150 && i != 2050 && i != 1950) {
 				walls.add(new Wall(i, 380, 100, 40));
 			}
+		}
+		
+		for(int i = 150; i < 530; i += 50) {
+			ladders.add(new Ladder(2830, i, 70, 50));
+		}
+		
+		for(int i = 150; i < 380; i += 50) {
+			ladders.add(new Ladder(1885, i, 70, 50));
 		}
 		
 		for(int i = 380; i < 600; i += 50) {
@@ -188,6 +196,12 @@ public GamePanel(int i) {
 		walls.add(new Wall(230, 160, 100, 40));
 		walls.add(new Wall(620, 160, 210, 40));
 		walls.add(new Wall(1170, 160, 300, 40));
+		walls.add(new Wall(2600, 160, 250, 40));
+		walls.add(new Wall(2180, 160, 270, 40));
+		walls.add(new Wall(1580, 160, 320, 40));
+		walls.add(new Wall(1950, 160, 100, 40));
+		walls.add(new Wall(2000, 0, 50, 150));
+		walls.add(new Wall(1560, 0, 50, 380));
 		
 		for(int i = -200; i < 650; i += 50) {
 			walls.add(new Wall(0, i, 50, 50));

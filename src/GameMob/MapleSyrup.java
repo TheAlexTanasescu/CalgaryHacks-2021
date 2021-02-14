@@ -22,14 +22,14 @@ public class MapleSyrup extends Mob {
 	protected void destroyMob() {
 		super.destroyMob();
 		super.panel.player.obtainedMaple = true;
-<<<<<<< HEAD
+		/*
 		ImagePane.main("You found the maple syrup Barry was hiding!\n"
 				+ "Quickly! Trade the maple syrup at Timmy's for a coffee\n"
 				+ "The coffee will give you enough energy to go to the next level!", "Tutorial Part 3", null);
+		*/
 		System.out.println("You have obtained Maple!");
-=======
+		
 		ImagePane.main("How's it going, eh?\n"
 				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null);
->>>>>>> c9900f1099eb225268328e5ca0c829b50db5d7a1
 	}
 }

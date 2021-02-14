@@ -106,14 +106,13 @@ public GamePanel(int i) {
 		
 		//Lvl 1 bear mob
 
-<<<<<<< HEAD
 		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
 		mobs.add(new PolarBear("Barry", 20, 550, 296, this, "res/bear.png", "res/bearLeft.png"));
 		mobs.add(new PolarBear("Bob", 20, 550, 70, this, "res/bear.png", "res/bearLeft.png"));
-=======
+
 		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
 		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
->>>>>>> c9900f1099eb225268328e5ca0c829b50db5d7a1
+
 		
 	}
 	
@@ -172,7 +171,7 @@ public GamePanel(int i) {
 	}
 <<<<<<< HEAD
 */
-=======
+
 	
 	public void makeFloor2(int offset) {
 		for(int i = 50; i < 3000; i += 50) {
@@ -211,7 +210,7 @@ public GamePanel(int i) {
 		}
 	}
 
->>>>>>> c9900f1099eb225268328e5ca0c829b50db5d7a1
+
 
 	public void reset() {
 		cameraX = -400;

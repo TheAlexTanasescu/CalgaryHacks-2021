@@ -20,18 +20,33 @@ import GameMob.Mob;
 
 public class StartPanel  extends javax.swing.JPanel {
 	boolean isFinished = false;
+	public int lvl;
 	Image background;
 	
 	public StartPanel(JFrame frame) {
 		setLayout( new GridBagLayout() );
-		JButton b = new JButton("Play");  
+		GridBagConstraints gb = new GridBagConstraints();
+		JButton b = new JButton("Level 1");  
 	    b.addActionListener(new ActionListener() {  
 	    	public void actionPerformed(ActionEvent e) {  
 	            frame.dispose();
 	            isFinished = true;
+	            lvl = 0;
 	        }  
 	    });
 	    add(b, new GridBagConstraints());
+	    
+	    JButton b1 = new JButton("Level 2");  
+	   // b1.setLocation(500, 500);
+	    b1.addActionListener(new ActionListener() {  
+	    	public void actionPerformed(ActionEvent e) {  
+	            frame.dispose();
+	            isFinished = true;
+	            lvl = 1;
+	        }  
+	    });
+	    add(b, gb);
+	    add(b1, gb);
 	    
 	    ImagePane.main("Press Maply's nose to Start", "Start", null, null);
 	    try {

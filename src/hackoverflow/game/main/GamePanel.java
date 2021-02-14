@@ -110,6 +110,7 @@ public GamePanel(JFrame frame, int i) {
 		if (pane == 1) {
 			mobs.add(new PolarBear("Berry", 20, 580, 90, this, "res/bear.png", "res/bearLeft.png"));
 			mobs.add(new PolarBear("Bob", 50, 550, 315, this, "res/bear.png", "res/bearLeft.png"));
+			mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
 		} else {
 
 			mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));

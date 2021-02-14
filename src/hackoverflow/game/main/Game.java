@@ -32,11 +32,16 @@ public class Game {
 		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		while (!startFrame.isFinished()) System.out.print("");;
+		while (!startFrame.isFinished()) System.out.print("");
+		MainFrame frame;
+		if (startFrame.panel.lvl == 0) frame = new MainFrame();
+		else frame = new MainFrame(1);
+			
+		
 		MainMenu.StopMusic();
-		MainFrame frame = new MainFrame();
+		
 		// the icon image for the game
-		ImageIcon Icon = new ImageIcon("res/GameIcon.png");;
+		ImageIcon Icon = new ImageIcon("res/GameIcon.png");
 		// setting the image as the icon for the game
 		frame.setIconImage(Icon.getImage());
 		

@@ -237,9 +237,7 @@ public class Player {
 						ImagePane.main("How's it going, eh?\n"
 								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null, this);
 						GamePanel gpane = new GamePanel(panel.frame, 1);
-						
-						panel.frame.add(gpane);
-						//dpanel.frame.remove(panel);
+						System.exit(0);
 					}
 
 				}

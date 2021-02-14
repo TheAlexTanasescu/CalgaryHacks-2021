@@ -5,7 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 public class StartFrame extends javax.swing.JFrame {
-	private StartPanel panel;
+	public StartPanel panel;
 	public StartFrame() {		
 		
 		panel = new StartPanel(this);

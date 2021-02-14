@@ -11,5 +11,6 @@ public class ImagePane
 	{
 		ImageIcon icon = new ImageIcon("res/justin.png");
 		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, icon);
+		
 	}
 }

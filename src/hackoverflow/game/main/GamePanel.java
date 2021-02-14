@@ -32,10 +32,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	Timer gameTimer;
 	Image lvl1Png;
 	Image lvl1InvsPng;
+	Image lvl2InvsPng;
 	Image lvl1TreePng;
+	int pane;
 	
 	public GamePanel() {
-		
+		pane = 0;
 		player = new Player(600, 500, this);
 		
 		initMobs();
@@ -67,14 +69,51 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		}, 0, 17);
 	}
 	
+public GamePanel(int i) {
+		pane = 1;
+		
+		player = new Player(600, 500, this);
+		initMobs();
+		
+		try {
+			lvl1Png = ImageIO.read(new File("res/level1bg.png"));
+			lvl2InvsPng = ImageIO.read(new File("res/level2transparent.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		reset2(); //Initialize walls with reset for ease
+
+		gameTimer = new Timer();
+		gameTimer.schedule(new TimerTask() {
+
+			@Override
+			public void run() {		
+				//DialogExample.main(null);
+				player.set();
+				for(Wall wall : walls) wall.set(cameraX);
+				for(Ladder ladder : ladders) ladder.set(cameraX);
+				for(Mob mob : mobs) mob.set(cameraX);
+				for(Icicle icicle : icicles) icicle.set(cameraX);
+				repaint();
+				
+			}
+			
+		}, 0, 17);
+	}
+	
 	//Initializes mobs
 	private void initMobs() {
 		
 		//Lvl 1 bear mob
 
+<<<<<<< HEAD
 		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
 		mobs.add(new PolarBear("Barry", 20, 550, 296, this, "res/bear.png", "res/bearLeft.png"));
 		mobs.add(new PolarBear("Bob", 20, 550, 70, this, "res/bear.png", "res/bearLeft.png"));
+=======
+		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
+		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+>>>>>>> c9900f1099eb225268328e5ca0c829b50db5d7a1
 		
 	}
 	
@@ -131,7 +170,48 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		}
 		
 	}
+<<<<<<< HEAD
 */
+=======
+	
+	public void makeFloor2(int offset) {
+		for(int i = 50; i < 3000; i += 50) {
+			walls.add(new Wall(i, 605, 50, 40));
+		}
+		
+		for(int i = 50; i < 3000; i += 100) {
+			if(i != 1250 && i != 1450 && i != 1600) {
+				walls.add(new Wall(i, 380, 100, 40));
+			}
+		}
+		
+		for(int i = 380; i < 600; i += 50) {
+			ladders.add(new Ladder(1270, i, 80, 50));
+		}
+		
+		for(int i = 150; i < 380; i += 50) {
+			ladders.add(new Ladder(165, i, 60, 50));
+		}
+		
+		walls.add(new Wall(50, 160, 100, 40));
+		walls.add(new Wall(230, 160, 100, 40));
+		walls.add(new Wall(620, 160, 210, 40));
+		walls.add(new Wall(1170, 160, 300, 40));
+		
+		for(int i = -200; i < 650; i += 50) {
+			walls.add(new Wall(0, i, 50, 50));
+		}
+		
+		for(int i = 150; i < 650; i += 50) {
+			walls.add(new Wall(1450, i, 50, 50));
+		}
+		
+		for(int i = -200; i < 650; i += 50) {
+			walls.add(new Wall(2950, i, 50, 50));
+		}
+	}
+
+>>>>>>> c9900f1099eb225268328e5ca0c829b50db5d7a1
 
 	public void reset() {
 		cameraX = -400;
@@ -142,12 +222,25 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		//makeIcicles(offset);
 	}
 	
+	public void reset2() {
+		cameraX = -400;
+		walls.clear();
+		int offset = 50;
+		makeFloor2(offset);
+	}
+	
 	public void paint(Graphics g) {
+		
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
 		
 		g.drawImage(lvl1Png, 0, 0, 1280, 720, null);
-		g.drawImage(lvl1InvsPng, 55 - cameraX, -70, 1350, 720, null);
+		if (pane == 0) {
+			g.drawImage(lvl1InvsPng, 55 - cameraX, -70, 1350, 720, null);
+		} else {
+			g.drawImage(lvl2InvsPng, 0 - cameraX, -70, 3000, 720, null);
+		}
+		
 //		g.drawImage(lvl1TreePng, 220 - cameraX, 150, 160, 200, null);
 
 		//player.draw(gtd);

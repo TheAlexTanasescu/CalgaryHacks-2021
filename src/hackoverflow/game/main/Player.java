@@ -25,8 +25,8 @@ public class Player {
 	public boolean obtainedMaple;
 	private JLabel lblHp;
 	
-	private double xspeed;
-	private double yspeed;
+	public double xspeed;
+	public double yspeed;
 	
 	private Rectangle hitBox;
 	public boolean keyLeft;
@@ -228,7 +228,11 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				if (wall.name == "tim") {
-					if (obtainedMaple) System.out.println("You Have WON THE GAME!!!");
+					if (obtainedMaple) {
+						ImagePane.main("How's it going, eh?\n"
+								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null);
+						System.exit(0);
+					}
 
 				}
 				hitBox.x -= xspeed;
@@ -248,7 +252,7 @@ public class Player {
 					xspeed = 0;
 					x = hitBox.x;
 					mob.hit();
-					hp --;
+					hit();
 				}
 			}
 		}
@@ -257,13 +261,19 @@ public class Player {
 	private void hit() {
 		hp --;
 		if (hp <= 0) {
+			//System.out.println("Lose Life");
 			loseLife();
 		}
 	}
 	
 	private void loseLife() {
 		lives --;
-		if (lives <= 0) gameOver = true;
+		if (lives <= 0) {
+			ImagePane.main("How's it going, eh?\n"
+					+ "See you on the other side i guess...\n", "GAME OVER", null);
+			System.exit(0);
+			gameOver = true;
+		}
 	}
 	//Checks for x collisions on objects
 	private void collisionCheckY() {

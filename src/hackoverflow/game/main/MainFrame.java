@@ -9,7 +9,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 	public MainFrame() {
 		
-		GamePanel panel = new GamePanel();
+		GamePanel panel = new GamePanel(1);
 		panel.setLocation(0, 0);
 		panel.setSize(this.getSize());
 		panel.setBackground(Color.LIGHT_GRAY);

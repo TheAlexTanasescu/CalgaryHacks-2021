@@ -20,13 +20,13 @@ public class PolarBear extends Mob {
 		
 		if (moveRight) {
 			lblMob.setIcon(mobIconR);
-			if (timer % 100 == 0) {
+			if (timer % 50 == 0) {
 				moveRight = false;
 			}
 			xspeed += 0.2;
 		} else {
 			lblMob.setIcon(mobIconL);
-			if (timer % 100 == 0) {
+			if (timer % 50 == 0) {
 				moveRight = true;
 			}
 			xspeed -= 0.2;

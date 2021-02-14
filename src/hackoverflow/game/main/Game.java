@@ -16,6 +16,9 @@ public class Game {
 
 
 	public static void main(String[] args) {
+		String MENU_TRACK = "res/menu.wav";
+		musictime MainMenu = new musictime();
+		
 		StartFrame startFrame = new StartFrame();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		startFrame.setSize(1280, 720);
@@ -23,9 +26,12 @@ public class Game {
 		startFrame.setResizable(false);
 		startFrame.setTitle("HackOverflow");
 		startFrame.setVisible(true);
+		MainMenu.PlayMusicLoop(MENU_TRACK);
 		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		while (!startFrame.isFinished()) System.out.print("");;
+		MainMenu.StopMusic();
 		MainFrame frame = new MainFrame();
 		// the icon image for the game
 		ImageIcon Icon = new ImageIcon("res/GameIcon.png");;

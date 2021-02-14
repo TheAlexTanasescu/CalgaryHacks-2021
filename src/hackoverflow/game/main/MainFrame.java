@@ -1,5 +1,6 @@
  package hackoverflow.game.main;
 import java.awt.Color;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -7,9 +8,16 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+
 public class MainFrame extends javax.swing.JFrame {
 
-	
 	public MainFrame() {
 		
 		try
@@ -27,8 +35,13 @@ public class MainFrame extends javax.swing.JFrame {
 		panel.setSize(this.getSize());
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setVisible(true);
+		
+		//this.setContentPane(lblBackground1);
 		this.add(panel);
 		addKeyListener(new KeyChecker(panel));
+		
+		
+		
 	}
 	
 }

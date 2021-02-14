@@ -34,7 +34,7 @@ public class Wall
 	public void draw(Graphics2D gtd)
 	{
 		gtd.setColor(Color.BLACK);
-		gtd.drawRect(x, y, width, height);
+		//gtd.drawRect(x, y, width, height);
 		gtd.setColor(Color.cyan);
 		//gtd.fillRect(x+1, y+1, width-2, height-2);
 		

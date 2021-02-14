@@ -3,12 +3,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GameMob.Mob;
-import  javamusicthing.musictime;
+import javamusicthing.MusicTime;
 public class Player {
 
 	private GamePanel panel;
@@ -23,10 +22,11 @@ public class Player {
 	
 	private int lives;
 	private boolean gameOver;
+	public boolean obtainedMaple;
 	private JLabel lblHp;
 	
-	private double xspeed;
-	private double yspeed;
+	public double xspeed;
+	public double yspeed;
 	
 	private Rectangle hitBox;
 	public boolean keyLeft;
@@ -66,8 +66,8 @@ public class Player {
 	String WACK_TRACK = "res/wack.wav";
 	
 	// music object used to play the music
-	musictime REGULAR_MUSIC = new musictime();
-	musictime FIGHT_MUSIC = new musictime();
+	MusicTime REGULAR_MUSIC = new MusicTime();
+	MusicTime FIGHT_MUSIC = new MusicTime();
 	
 	
 	
@@ -79,8 +79,9 @@ public class Player {
 		timer = 0;
 		maxHp = 20;
 		hp = maxHp;
-        lives = 3;
+        lives = 1;
         gameOver = false;
+        obtainedMaple = false;
 		width = 50;
 		height = 100;
 		
@@ -125,7 +126,7 @@ public class Player {
 		if (keyUp)
 		{
 			hitBox.y = hitBox.y + 2;
-			System.out.println("Y position: "+ hitBox.y);
+			//System.out.println("Y position: "+ hitBox.y);
 			
 			for (Wall wall: panel.walls)
 			{
@@ -139,6 +140,17 @@ public class Player {
 			hitBox.y --;
 			
 			if (hitBox.y <= 299 && FIGHT_MUSIC_FLAG == 0 && hitBox.y > 90) {
+				ImagePane.main("How's it going, eh\n"
+						+ "See that mean ol' polar bear over there?\n"
+						+ "Thats Barry the Polar Bear.\n"
+						+ "We need do defeat him in order \n"
+						+ "to get to the maple syrup in that \n"
+						+ "maple tree\n"
+						+ "\n"
+						+ "Jump on him with your skates and \n"
+						+ "your hockey stick to hurt him. \n"
+						+ "Be careful not get bitten \n"
+						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null);
 				FIGHT_MUSIC_FLAG = 1;
 				REGULAR_MUSIC.StopMusic();
 				REGULAR_MUSIC_FLAG = 0;
@@ -211,12 +223,20 @@ public class Player {
 		{
 			if(hitBox.intersects(wall.hitBox))
 			{
+				if (wall.name == "tim") {
+					if (obtainedMaple) {
+						ImagePane.main("How's it going, eh?\n"
+								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null);
+						System.exit(0);
+					}
+
+				}
 				hitBox.x -= xspeed;
 				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
 				hitBox.x -= Math.signum(xspeed);
 				xspeed = 0;
 				x = hitBox.x;
-          
+				
 			}
 		}
 		for(Mob mob : panel.mobs) {
@@ -228,7 +248,7 @@ public class Player {
 					xspeed = 0;
 					x = hitBox.x;
 					mob.hit();
-					hp --;
+					hit();
 				}
 			}
 		}
@@ -237,13 +257,19 @@ public class Player {
 	private void hit() {
 		hp --;
 		if (hp <= 0) {
+			//System.out.println("Lose Life");
 			loseLife();
 		}
 	}
 	
 	private void loseLife() {
 		lives --;
-		if (lives <= 0) gameOver = true;
+		if (lives <= 0) {
+			ImagePane.main("How's it going, eh?\n"
+					+ "See you on the other side i guess...\n", "GAME OVER", null);
+			System.exit(0);
+			gameOver = true;
+		}
 	}
 	//Checks for x collisions on objects
 	private void collisionCheckY() {
@@ -300,7 +326,6 @@ public class Player {
 		gtd.setColor(Color.black);
 	    gtd.fillRect(x, y, width, 5);
 	    gtd.setColor(Color.red);
-	    System.out.println("hp: " + hp);
 	    gtd.fillRect(x, y, (width * hp) / maxHp, 5);
 	}
 	

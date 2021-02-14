@@ -12,6 +12,7 @@ import java.util.TimerTask;
 public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
 	ArrayList<Wall> walls = new ArrayList<>();
+	ArrayList<Ladder> ladders = new ArrayList<>();
 	Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
@@ -61,6 +62,10 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 		for(int i = -200; i < 600; i += 50) {
 			walls.add(new Wall(1350, i, 50, 50));
+		}
+		
+		for(int i = -200; i < 600; i += 50) {
+			ladders.add(new Ladder(1250, i, 50, 50));
 		}
 		
 		//Obstacles floor 1

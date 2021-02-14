@@ -32,6 +32,7 @@ public class Player {
 	private ImageIcon player1l;
 	private ImageIcon player2l;
 	
+	
 	public Player(int x, int y, GamePanel panel) {
 		
 		this.panel = panel;

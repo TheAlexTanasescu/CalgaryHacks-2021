@@ -21,8 +21,18 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 
 
+		/*
+		StartPanel start = new StartPanel();
+		start.setLocation(0, 0);
+		start.setSize(this.getSize());
+		start.setBackground(Color.LIGHT_GRAY);
+		start.setVisible(true);
+		this.add(start);
 		
-
+		while(!start.isFinished);
+		
+		this.remove(start);
+		*/
 		GamePanel panel = new GamePanel();
 		panel.setLocation(0, 0);
 		panel.setSize(this.getSize());

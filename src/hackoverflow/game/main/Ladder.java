@@ -30,9 +30,8 @@ public class Ladder
 		
 	}
 	
-	public int set(int cameraX) {
+	public void set(int cameraX) {
 		x = startX - cameraX;
 		hitBox.x = x;
-		return x;
 	}
 }

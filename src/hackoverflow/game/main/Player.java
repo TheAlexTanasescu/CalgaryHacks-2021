@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import GameMob.Mob;
+
 public class Player {
 
 	private GamePanel panel;
@@ -13,6 +15,7 @@ public class Player {
 	private int width;
 	private int height;
 	private int timer;
+
 	
 	private double xspeed;
 	private double yspeed;
@@ -93,45 +96,14 @@ public class Player {
 		yspeed += 0.3;
 		
 		//Horizontal Collision
-		
 		hitBox.x += xspeed;
-		for (Wall wall : panel.walls)
-		{
-			if(hitBox.intersects(wall.hitBox))
-			{
-				hitBox.x -= xspeed;
-				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
-
-				while(!wall.hitBox.intersects(hitBox))
-					hitBox.x += Math.signum(xspeed);
-
-					hitBox.x -= Math.signum(xspeed);
-					xspeed = 0;
-					x = hitBox.x;
-
-          hitBox.x -= Math.signum(xspeed);
-          xspeed = 0;
-          x = hitBox.x;
-
-			}
-		}
+		collisionCheckX();
+		//---
 		
 		//Vertical Collision
-		
 		hitBox.y += yspeed;
-		for (Wall wall : panel.walls)
-		{
-			if(hitBox.intersects(wall.hitBox))
-			{
-				hitBox.y -= yspeed;
-				while(!wall.hitBox.intersects(hitBox))
-					hitBox.y += Math.signum(yspeed);
-					hitBox.y -= Math.signum(yspeed);
-					yspeed = 0;
-					y = hitBox.y;
-
-			}
-		}
+		collisionCheckY();
+		//---
 
 		if(xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if(xspeed < 0 && xspeed > -0.75) xspeed = 0;
@@ -161,6 +133,60 @@ public class Player {
 		panel.reset();
 	}
 	
+	//Checks for y collisions on objects
+	private void collisionCheckX() {
+		for (Wall wall : panel.walls)
+		{
+			if(hitBox.intersects(wall.hitBox))
+			{
+				hitBox.x -= xspeed;
+				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+				hitBox.x -= Math.signum(xspeed);
+				xspeed = 0;
+				x = hitBox.x;
+          
+			}
+		}
+		for(Mob mob : panel.mobs) {
+			if (mob.isAlive()) {
+				if (mob.hitBox.intersects(hitBox)) {
+					hitBox.x -= xspeed;
+					while(!mob.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+					hitBox.x -= Math.signum(xspeed);
+					xspeed = 0;
+					x = hitBox.x;
+					mob.hit();
+				}
+			}
+		}
+	}
+	
+	//Checks for x collisions on objects
+	private void collisionCheckY() {
+		for (Wall wall : panel.walls) {
+			if(hitBox.intersects(wall.hitBox))
+			{
+				hitBox.y -= yspeed;
+				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);
+				hitBox.y -= Math.signum(yspeed);
+				yspeed = 0;
+				y = hitBox.y;
+
+			}
+		}
+		for(Mob mob : panel.mobs) {
+			if (mob.isAlive()) {
+				if (mob.hitBox.intersects(hitBox)) {
+					hitBox.y -= yspeed;
+					while(!mob.hitBox.intersects(hitBox))hitBox.y += Math.signum(yspeed);				
+					hitBox.y -= Math.signum(yspeed);
+					yspeed = 0;
+					y = hitBox.y;
+					mob.hit();
+				}
+			}
+		}
+	}
 	//Changes the player image to imitate movement
 	private void setPlayerIcon() {
 		if (keyRight && keyLeft) {

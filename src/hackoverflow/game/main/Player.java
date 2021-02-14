@@ -48,6 +48,7 @@ public class Player {
 	
 	// ALL OF THE MUSIC TRACKS IN THE GAME
 	String REGULAR_TRACK = "res/regular.wav";
+	int	REGULAR_MUSIC_FLAG = 0;
 	String FIGHT_TRACK = "res/FIGHT.wav";
 	int FIGHT_MUSIC_FLAG = 0;
 	String MENU_TRACK = "res/menu.wav";
@@ -58,8 +59,8 @@ public class Player {
 	String WACK_TRACK = "res/wack.wav";
 	
 	// music object used to play the music
-	musictime REGULAR_MUSIC_OBJECT = new musictime();
-	
+	musictime REGULAR_MUSIC = new musictime();
+	musictime FIGHT_MUSIC = new musictime();
 	
 	
 	
@@ -89,7 +90,10 @@ public class Player {
         
         hitBox = new Rectangle(x, y, width, height);
      // start the music
-    	REGULAR_MUSIC_OBJECT.PlayMusicLoop(REGULAR_TRACK);
+    	REGULAR_MUSIC.PlayMusicLoop(REGULAR_TRACK);
+    	REGULAR_MUSIC_FLAG = 1;
+    	
+    	
 	}
 	
 	public void set() {
@@ -122,13 +126,25 @@ public class Player {
 			
 			hitBox.y --;
 			
-			if (hitBox.y == 289 && FIGHT_MUSIC_FLAG == 0) {
+			if (hitBox.y <= 299 && FIGHT_MUSIC_FLAG == 0 && hitBox.y > 90) {
 				FIGHT_MUSIC_FLAG = 1;
-				REGULAR_MUSIC_OBJECT.StopMusic();
+				REGULAR_MUSIC.StopMusic();
+				REGULAR_MUSIC_FLAG = 0;
 				// music object used to play the music
-				musictime FIGHT_MUSIC = new musictime();
+				
 				// start the music
 				FIGHT_MUSIC.PlayMusicLoop(FIGHT_TRACK);
+				
+				
+			}
+			if (hitBox.y <= 90 && REGULAR_MUSIC_FLAG == 0) {
+				System.out.println("YES it is " + REGULAR_MUSIC_FLAG);
+				FIGHT_MUSIC_FLAG = 0;
+				FIGHT_MUSIC.StopMusic();
+				
+				REGULAR_MUSIC_FLAG = 1;
+				// start the music
+				REGULAR_MUSIC.PlayMusicLoop(REGULAR_TRACK);
 				
 				
 			}

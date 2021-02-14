@@ -7,7 +7,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
-public class musictime {
+public class MusicTime {
 
 	Clip clip;
 	// plays music in a loop

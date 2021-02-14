@@ -6,6 +6,7 @@ public class Wall
 {
 	int x, y, width, height;
 	int startX;
+	String name;
 	public Rectangle hitBox;
 	
 	public Wall(int x, int y, int width, int height)
@@ -14,6 +15,17 @@ public class Wall
 		 this.y = y;
 		 this.height = height;
 		 this.width = width;
+		 startX = x;
+		 
+		 hitBox = new Rectangle(x, y, width, height);
+	}
+	
+	public Wall(int x, int y, int width, int height, String name) {
+		this.x = x;
+		 this.y = y;
+		 this.height = height;
+		 this.width = width;
+		 this.name = name;
 		 startX = x;
 		 
 		 hitBox = new Rectangle(x, y, width, height);

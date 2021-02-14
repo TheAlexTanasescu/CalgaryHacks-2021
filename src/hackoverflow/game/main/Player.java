@@ -81,6 +81,11 @@ public class Player {
 			{
 				if (wall.hitBox.intersects(hitBox)) yspeed = -8;
 			}
+			
+			for(Ladder ladder : panel.ladders) {
+				if (ladder.hitBox.intersects(hitBox)) yspeed = -8;
+			}
+			
 			hitBox.y --;
 		}
 		

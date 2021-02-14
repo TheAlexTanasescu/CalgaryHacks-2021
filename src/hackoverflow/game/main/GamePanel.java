@@ -21,7 +21,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	
 	public GamePanel() {
 		
-		player = new Player(100, 400, this);
+		player = new Player(600, 400, this);
 		
 
 		reset(); //Intitalize walls with reset for ease
@@ -40,6 +40,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			public void run() {			
 				player.set();
 				for(Wall wall : walls) wall.set(cameraX);
+				for(Ladder ladder : ladders) ladder.set(cameraX);
 				repaint();
 				
 			}
@@ -72,34 +73,45 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		for(int i = -200; i < 600; i += 50) {
 			walls.add(new Wall(1350, i, 50, 50));
 		}
+
 		
-		for(int i = 0; i < 400; i += 50) {
-			ladders.add(new Ladder(1150, i, 50, 50));
-		}
-		
+
 		//Obstacles floor 1
 		walls.add(new Wall(500, 550, 50, 50)); //small mound 1
 		walls.add(new Wall(550, 550, 50, 50)); //small mound 1
 		walls.add(new Wall(850, 550, 50, 50)); //large mound 1
 		walls.add(new Wall(850, 500, 50, 50)); //large mound 1
 	}
+	
+	public void makeLadders(int offset) {		
+		for(int i = 350; i < 600; i += 50) {
+			ladders.add(new Ladder(1150, i, 50, 50));
+		}
+		
+		for(int i = 50; i < 350; i += 50) {
+			ladders.add(new Ladder(150, i, 50, 50));
+		}
+	}
 
 
 	public void reset() {
-		cameraX = 150;
+		cameraX = -400;
 		walls.clear();
 		int offset = 50;
 		makeWalls(offset); //Create walls every reset so they don't stack up each time
-
+		makeLadders(offset); //Create walls every reset so they don't stack up each time
 	}
 	
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
-		
-		player.draw(gtd);
 		for(Wall wall: walls) wall.draw(gtd);
+
 		for(Ladder ladder: ladders) ladder.draw(gtd);
+
+		for(Ladder ladder : ladders) ladder.draw(gtd);
+		player.draw(gtd);
+
 	}
 	
 

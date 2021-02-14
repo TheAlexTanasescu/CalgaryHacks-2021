@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
+
 public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
 	ArrayList<Wall> walls = new ArrayList<>();
@@ -27,6 +29,13 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
 
+			/*
+			protected void paintComponent(Graphics g) {
+			    super.paintComponent(g); // paint the background image and scale it to fill the entire space
+			    ImageIcon img = new ImageIcon("Hackathon 2021 Assets/BG.png");
+			    g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+			}
+			*/
 			@Override
 			public void run() {			
 				player.set();
@@ -64,8 +73,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			walls.add(new Wall(1350, i, 50, 50));
 		}
 		
-		for(int i = -200; i < 600; i += 50) {
-			ladders.add(new Ladder(1250, i, 50, 50));
+		for(int i = 0; i < 400; i += 50) {
+			ladders.add(new Ladder(1150, i, 50, 50));
 		}
 		
 		//Obstacles floor 1
@@ -90,6 +99,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 		player.draw(gtd);
 		for(Wall wall: walls) wall.draw(gtd);
+		for(Ladder ladder: ladders) ladder.draw(gtd);
 	}
 	
 

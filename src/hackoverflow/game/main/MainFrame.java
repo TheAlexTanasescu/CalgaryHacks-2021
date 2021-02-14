@@ -21,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 
 
-		
+		/*
 		StartPanel start = new StartPanel();
 		start.setLocation(0, 0);
 		start.setSize(this.getSize());
@@ -32,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
 		while(!start.isFinished);
 		
 		this.remove(start);
+		*/
 		GamePanel panel = new GamePanel();
 		panel.setLocation(0, 0);
 		panel.setSize(this.getSize());

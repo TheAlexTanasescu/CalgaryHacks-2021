@@ -28,9 +28,8 @@ public class Game {
 		
 		frame.setResizable(false);
 		frame.setTitle("HackOverflow");
-		
 		frame.setVisible(true);
-		
+		ImagePane.main(args);
 		// ALL OF THE MUSIC TRACKS IN THE GAME
 		String REGULAR_TRACK = "res/regular.wav";
 		String FIGHT_TRACK = "res/FIGHT.wav";

@@ -28,6 +28,9 @@ public class Player {
 	private ImageIcon player0;
 	private ImageIcon player1;
 	private ImageIcon player2;
+	private ImageIcon player0l;
+	private ImageIcon player1l;
+	private ImageIcon player2l;
 	
 	public Player(int x, int y, GamePanel panel) {
 		
@@ -43,6 +46,9 @@ public class Player {
 		player0 = new ImageIcon("res/player0.png");
 		player1 = new ImageIcon("res/player1.png");
 		player2 = new ImageIcon("res/player2.png");
+		player0l = new ImageIcon("res/player0left.png");
+		player1l = new ImageIcon("res/player1left.png");
+		player2l = new ImageIcon("res/player2left.png");
 		
 		lblPlayer = new JLabel(player0);
 		
@@ -150,10 +156,25 @@ public class Player {
 	
 	//Changes the player image to imitate movement
 	private void setPlayerIcon() {
-		if (timer % 10 == 0) {
-			if ((lblPlayer.getIcon() == player0) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player1);
-			else if ((lblPlayer.getIcon() == player1) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player2);
-			else if ((lblPlayer.getIcon() == player2) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player0);
+		if (keyRight && keyLeft) {
+			return;
+		}
+		if (timer % 7 == 0) {
+			if (keyRight && !keyUp) {
+				if (lblPlayer.getIcon() == player0) lblPlayer.setIcon(player1);
+				else if (lblPlayer.getIcon() == player1) lblPlayer.setIcon(player2);
+				else if (lblPlayer.getIcon() == player2) lblPlayer.setIcon(player0);
+				else lblPlayer.setIcon(player0);
+			} else if (keyLeft && !keyUp) {
+				if (lblPlayer.getIcon() == player0l) lblPlayer.setIcon(player1l);
+				else if (lblPlayer.getIcon() == player1l) lblPlayer.setIcon(player2l);
+				else if (lblPlayer.getIcon() == player2l) lblPlayer.setIcon(player0l);
+				else lblPlayer.setIcon(player0l);
+			} else if (keyUp && keyLeft) {
+				lblPlayer.setIcon(player1l);
+			} else if (keyUp && keyRight) {
+				lblPlayer.setIcon(player1);
+			}
 		}
 	}
 	

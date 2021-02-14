@@ -73,7 +73,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		//Lvl 1 bear mob
 
 		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
-		mobs.add(new PolarBear("Bob", 20, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+		mobs.add(new PolarBear("Barry", 20, 550, 296, this, "res/bear.png", "res/bearLeft.png"));
+		mobs.add(new PolarBear("Bob", 20, 550, 70, this, "res/bear.png", "res/bearLeft.png"));
 		
 	}
 	
@@ -123,14 +124,14 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			ladders.add(new Ladder(150, i, 50, 50));
 		}
 	}
-	
+	/*
 	public void makeIcicles(int offset) {		
 		for(int i = 250; i < 600; i += 50) {
 			icicles.add(new Icicle(i, 0, 50, 50));
 		}
 		
 	}
-
+*/
 
 	public void reset() {
 		cameraX = -400;
@@ -138,7 +139,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		int offset = 50;
 		makeWalls(offset); //Create walls every reset so they don't stack up each time
 		makeLadders(offset); //Create walls every reset so they don't stack up each time
-		makeIcicles(offset);
+		//makeIcicles(offset);
 	}
 	
 	public void paint(Graphics g) {
@@ -154,7 +155,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		for(Wall wall: walls) wall.draw(gtd);
 		for(Ladder ladder: ladders) ladder.draw(gtd);
 		for(Mob mob: mobs) mob.draw(gtd);
-		for(Icicle icicle: icicles) icicle.draw(gtd);
+		//for(Icicle icicle: icicles) icicle.draw(gtd);
 
 		player.draw(gtd);
 

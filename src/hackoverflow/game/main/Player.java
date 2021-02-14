@@ -121,7 +121,11 @@ public class Player {
 		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
 		if (xspeed > 7) xspeed = 7;
-		if (xspeed < -7) xspeed = -7;
+		if (xspeed < -7)
+		{
+			xspeed = -7;
+			System.out.println("X" + hitBox.x + "Y" + hitBox.y);		
+		}
 
 		if (keyUp)
 		{

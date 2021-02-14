@@ -121,7 +121,11 @@ public class Player {
 		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
 		if (xspeed > 7) xspeed = 7;
-		if (xspeed < -7) xspeed = -7;
+		if (xspeed < -7)
+		{
+			xspeed = -7;
+			System.out.println("X" + hitBox.x + "Y" + hitBox.y);		
+		}
 
 		if (keyUp)
 		{
@@ -140,6 +144,7 @@ public class Player {
 			hitBox.y --;
 			
 			if (hitBox.y <= 299 && FIGHT_MUSIC_FLAG == 0 && hitBox.y > 90) {
+				/*
 				ImagePane.main("How's it going, eh\n"
 						+ "See that mean ol' polar bear over there?\n"
 						+ "Thats Barry the Polar Bear.\n"
@@ -151,6 +156,7 @@ public class Player {
 						+ "your hockey stick to hurt him. \n"
 						+ "Be careful not get bitten \n"
 						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null);
+						*/
 				FIGHT_MUSIC_FLAG = 1;
 				REGULAR_MUSIC.StopMusic();
 				REGULAR_MUSIC_FLAG = 0;

@@ -106,8 +106,13 @@ public GamePanel(int i) {
 		
 		//Lvl 1 bear mob
 
+		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
+		mobs.add(new PolarBear("Barry", 20, 550, 296, this, "res/bear.png", "res/bearLeft.png"));
+		mobs.add(new PolarBear("Bob", 20, 550, 70, this, "res/bear.png", "res/bearLeft.png"));
+
 		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
 		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+
 		
 	}
 	
@@ -157,13 +162,16 @@ public GamePanel(int i) {
 			ladders.add(new Ladder(150, i, 50, 50));
 		}
 	}
-	
+	/*
 	public void makeIcicles(int offset) {		
 		for(int i = 250; i < 600; i += 50) {
 			icicles.add(new Icicle(i, 0, 50, 50));
 		}
 		
 	}
+<<<<<<< HEAD
+*/
+
 	
 	public void makeFloor2(int offset) {
 		for(int i = 50; i < 3000; i += 50) {
@@ -203,13 +211,14 @@ public GamePanel(int i) {
 	}
 
 
+
 	public void reset() {
 		cameraX = -400;
 		walls.clear();
 		int offset = 50;
 		makeWalls(offset); //Create walls every reset so they don't stack up each time
 		makeLadders(offset); //Create walls every reset so they don't stack up each time
-		makeIcicles(offset);
+		//makeIcicles(offset);
 	}
 	
 	public void reset2() {
@@ -238,7 +247,7 @@ public GamePanel(int i) {
 		for(Wall wall: walls) wall.draw(gtd);
 		for(Ladder ladder: ladders) ladder.draw(gtd);
 		for(Mob mob: mobs) mob.draw(gtd);
-		for(Icicle icicle: icicles) icicle.draw(gtd);
+		//for(Icicle icicle: icicles) icicle.draw(gtd);
 
 		player.draw(gtd);
 

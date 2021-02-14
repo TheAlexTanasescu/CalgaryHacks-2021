@@ -28,13 +28,15 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	int cameraX; //create camera
 	Timer gameTimer;
 	Image lvl1Png;
+	Image lvl1InvsPng;
 	Image lvl1TreePng;
 	
 	public GamePanel() {
 		
-		player = new Player(600, 400, this);
+		player = new Player(600, 500, this);
 		try {
-			lvl1Png = ImageIO.read(new File("Hackathon 2021 Assets/BG.png"));
+			lvl1Png = ImageIO.read(new File("res/level1bg.png"));
+			lvl1InvsPng = ImageIO.read(new File("res/level1transparent.png"));
 			lvl1TreePng = ImageIO.read(new File("Hackathon 2021 Assets/Tree_2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -71,13 +73,13 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 		for(int i = 50; i < 1400; i += 50) {
 			if(i != 1150) {
-				walls.add(new Wall(i, 350, 50, 50));
+				walls.add(new Wall(i, 360, 50, 50));
 			}
 		}
 		
 		for(int i = 50; i < 1400; i += 50) {
 			if(i != 150) {
-				walls.add(new Wall(i, 50, 50, 50));
+				walls.add(new Wall(i, 120, 50, 50));
 			}
 		}
 		
@@ -92,10 +94,10 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		
 
 		//Obstacles floor 1
+		walls.add(new Wall(450, 550, 50, 50)); //small mound 1
 		walls.add(new Wall(500, 550, 50, 50)); //small mound 1
-		walls.add(new Wall(550, 550, 50, 50)); //small mound 1
-		walls.add(new Wall(850, 550, 50, 50)); //large mound 1
-		walls.add(new Wall(850, 500, 50, 50)); //large mound 1
+		walls.add(new Wall(800, 550, 50, 50)); //large mound 1
+		walls.add(new Wall(800, 500, 50, 50)); //large mound 1
 	}
 	
 	public void makeLadders(int offset) {		
@@ -103,7 +105,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 			ladders.add(new Ladder(1150, i, 50, 50));
 		}
 		
-		for(int i = 50; i < 350; i += 50) {
+		for(int i = 100; i < 350; i += 50) {
 			ladders.add(new Ladder(150, i, 50, 50));
 		}
 	}
@@ -122,7 +124,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		Graphics2D gtd = (Graphics2D) g;
 		
 		g.drawImage(lvl1Png, 0, 0, 1280, 720, null);
-		g.drawImage(lvl1TreePng, 220 - cameraX, 150, 160, 200, null);
+		g.drawImage(lvl1InvsPng, 55 - cameraX, -70, 1350, 720, null);
+//		g.drawImage(lvl1TreePng, 220 - cameraX, 150, 160, 200, null);
 
 		player.draw(gtd);
 		

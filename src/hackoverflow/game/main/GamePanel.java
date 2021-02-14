@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,13 +23,17 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
-	ImageIcon lvl1Png;
+	Image lvl1Png;
 	
 	public GamePanel() {
 		
 		player = new Player(600, 400, this);
-		
-		reset(); //Intitalize walls with reset for ease
+		try {
+			lvl1Png = ImageIO.read(new File("res/lvl1.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		reset(); //Initialize walls with reset for ease
 
 		gameTimer = new Timer();
 		gameTimer.schedule(new TimerTask() {
@@ -100,6 +106,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
 		
+		g.drawImage(lvl1Png, 0, 0, 1280, 720, null);
+
 		player.draw(gtd);
 		
 		for(Wall wall: walls) wall.draw(gtd);

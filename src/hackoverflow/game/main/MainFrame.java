@@ -1,10 +1,6 @@
 package hackoverflow.game.main;
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JLabel;
+
 
 
 
@@ -21,7 +17,6 @@ public class MainFrame extends javax.swing.JFrame {
 		
 		this.add(panel);
 		addKeyListener(new KeyChecker(panel));
-
 		
 		
 	}

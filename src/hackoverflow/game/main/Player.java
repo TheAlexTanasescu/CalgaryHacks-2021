@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -23,6 +22,7 @@ public class Player {
 	
 	private int lives;
 	private boolean gameOver;
+	public boolean obtainedMaple;
 	private JLabel lblHp;
 	
 	private double xspeed;
@@ -79,8 +79,9 @@ public class Player {
 		timer = 0;
 		maxHp = 20;
 		hp = maxHp;
-        lives = 3;
+        lives = 1;
         gameOver = false;
+        obtainedMaple = false;
 		width = 50;
 		height = 100;
 		
@@ -125,7 +126,7 @@ public class Player {
 		if (keyUp)
 		{
 			hitBox.y = hitBox.y + 2;
-			System.out.println("Y position: "+ hitBox.y);
+			//System.out.println("Y position: "+ hitBox.y);
 			
 			for (Wall wall: panel.walls)
 			{
@@ -211,12 +212,16 @@ public class Player {
 		{
 			if(hitBox.intersects(wall.hitBox))
 			{
+				if (wall.name == "tim") {
+					if (obtainedMaple) System.out.println("You Have WON THE GAME!!!");
+
+				}
 				hitBox.x -= xspeed;
 				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
 				hitBox.x -= Math.signum(xspeed);
 				xspeed = 0;
 				x = hitBox.x;
-          
+				
 			}
 		}
 		for(Mob mob : panel.mobs) {
@@ -300,7 +305,6 @@ public class Player {
 		gtd.setColor(Color.black);
 	    gtd.fillRect(x, y, width, 5);
 	    gtd.setColor(Color.red);
-	    System.out.println("hp: " + hp);
 	    gtd.fillRect(x, y, (width * hp) / maxHp, 5);
 	}
 	

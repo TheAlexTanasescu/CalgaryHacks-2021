@@ -13,12 +13,13 @@ public class MainFrame extends javax.swing.JFrame {
 
 	public MainFrame() {
 
-		try {
-			JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("Hackathon 2021 Assets/BG.png"))));
-		}
-		catch (IOException e) {
-			
-		}
+			try {
+				JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("Hackathon 2021 Assets/BG.png"))));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 
 		
 
@@ -30,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 		this.add(panel);
 		addKeyListener(new KeyChecker(panel));
+
 
 	}
 	

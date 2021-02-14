@@ -3,7 +3,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.imageio.ImageIO;
 
 import GameMob.MapleSyrup;
@@ -71,8 +71,9 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	private void initMobs() {
 		
 		//Lvl 1 bear mob
-		mobs.add(new PolarBear("Bob", 30, 440, 295, this, "res/bear.png", "res/bearLeft.png"));
 		mobs.add(new MapleSyrup("maple", 5, 440, 310, this, "res/maple.png", "res/maple.png"));
+		mobs.add(new PolarBear("Bob", 20, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+		
 	}
 	
 	

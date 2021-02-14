@@ -140,6 +140,17 @@ public class Player {
 			hitBox.y --;
 			
 			if (hitBox.y <= 299 && FIGHT_MUSIC_FLAG == 0 && hitBox.y > 90) {
+				ImagePane.main("How's it going, eh\n"
+						+ "See that mean ol' polar bear over there?\n"
+						+ "Thats Barry the Polar Bear.\n"
+						+ "We need do defeat him in order \n"
+						+ "to get to the maple syrup in that \n"
+						+ "maple tree\n"
+						+ "\n"
+						+ "Jump on him with your skates and \n"
+						+ "your hockey stick to hurt him. \n"
+						+ "Be careful not get bitten \n"
+						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null);
 				FIGHT_MUSIC_FLAG = 1;
 				REGULAR_MUSIC.StopMusic();
 				REGULAR_MUSIC_FLAG = 0;

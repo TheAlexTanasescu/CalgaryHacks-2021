@@ -47,7 +47,14 @@ public class Game {
 		frame.setResizable(false);
 		frame.setTitle("HackOverflow");
 		frame.setVisible(true);
-		ImagePane.main(args);
+		ImagePane.main("Hello there, eh, sorry to bother you\n"
+				+ "I'm Justin Beaver\n"
+				+ "I'll help you throughout the game\n"
+				+ "\n"
+				+ "Press A and D to go left and right\n"
+				+ "Press W to jump and climb ladders\n"
+				+ "\n"
+				, "Tutorial", args);
 		
 		
 		

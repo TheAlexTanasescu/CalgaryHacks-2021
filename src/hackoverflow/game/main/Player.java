@@ -7,41 +7,47 @@ import javax.swing.JLabel;
 
 public class Player {
 
-	GamePanel panel;
-	int x;
-	int y;
-	int width;
-	int height;
+	private GamePanel panel;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	private int timer;
 	
-	double xspeed;
-	double yspeed;
+	private double xspeed;
+	private double yspeed;
 	
-	Rectangle hitBox;
-	boolean keyLeft;
-	boolean keyRight;
-	boolean keyUp;
-	boolean keyDown;
+	private Rectangle hitBox;
+	public boolean keyLeft;
+	public boolean keyRight;
+	public boolean keyUp;
+	public boolean keyDown;
 	
 	//Image stuff
-	ImageIcon player;
-	JLabel lblPlayer;
+	private JLabel lblPlayer;
+	private ImageIcon player0;
+	private ImageIcon player1;
+	private ImageIcon player2;
 	
 	public Player(int x, int y, GamePanel panel) {
 		
 		this.panel = panel;
 		this.x = x;
 		this.y = y;
+		timer = 0;
 		
 		width = 50;
 		height = 100;
 		
-		//hitBox = new Rectangle(x, y, width, height);
-		
 		//Image stuff
-		player = new ImageIcon("res/player0.png");
-		lblPlayer = new JLabel(player);     
-        width = player.getIconWidth();
-        height = player.getIconHeight();
+		player0 = new ImageIcon("res/player0.png");
+		player1 = new ImageIcon("res/player1.png");
+		player2 = new ImageIcon("res/player2.png");
+		
+		lblPlayer = new JLabel(player0);
+		
+        width = player0.getIconWidth();
+        height = player0.getIconHeight();
         
         hitBox = new Rectangle(x, y, width, height);
 	}
@@ -51,12 +57,13 @@ public class Player {
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		
-		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
+		//Timer
+		timer ++;
+		setPlayerIcon();
 		
+		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
-
 		if (xspeed > 7) xspeed = 7;
-
 		if (xspeed < -7) xspeed = -7;
 
 		if (keyUp)
@@ -98,9 +105,9 @@ public class Player {
 				hitBox.y -= yspeed;
 				while(!wall.hitBox.intersects(hitBox))
 					hitBox.y += Math.signum(yspeed);
-          hitBox.y -= Math.signum(yspeed);
-          yspeed = 0;
-          y = hitBox.y;
+					hitBox.y -= Math.signum(yspeed);
+					yspeed = 0;
+					y = hitBox.y;
 			}
 		}
 
@@ -119,14 +126,29 @@ public class Player {
 		
 		//Code for death
 		if(y > 800) {
+			this.reset();
 			panel.reset();
 		}
 	}
 	
+	private void reset() {
+		x = 200;
+		y = 150;
+		xspeed = 0;
+		yspeed = 0;
+		panel.reset();
+	}
+	
+	//Changes the player image to imitate movement
+	private void setPlayerIcon() {
+		if (timer % 10 == 0) {
+			if ((lblPlayer.getIcon() == player0) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player1);
+			else if ((lblPlayer.getIcon() == player1) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player2);
+			else if ((lblPlayer.getIcon() == player2) && (keyRight|| keyLeft) && !(keyUp)) lblPlayer.setIcon(player0);
+		}
+	}
+	
 	public void draw(Graphics2D gtd) {
-		//gtd.setColor(Color.BLACK);
-		//gtd.fillRect(x, y, width, height);
 		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
-		
 	}
 }

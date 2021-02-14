@@ -68,7 +68,7 @@ public class Game {
 				+ "to get energy for the next level\n"
 				+ "\n"
 				+ "Good luck, eh"
-				, "Tutorial", args, null);
+				, "Tutorial", args, null, new ImageIcon("res/justin.png"));
 
 		
 		//OptionPaneExample.main(null);

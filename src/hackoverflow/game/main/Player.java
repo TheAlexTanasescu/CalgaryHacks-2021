@@ -126,7 +126,7 @@ public class Player {
 		if (xspeed < -7)
 		{
 			xspeed = -7;
-			System.out.println("X" + hitBox.x + "Y" + hitBox.y);		
+			//System.out.println("X" + hitBox.x + "Y" + hitBox.y);		
 		}
 
 		if (keyUp)
@@ -171,7 +171,7 @@ public class Player {
 				
 			}
 			if (hitBox.y <= 90 && REGULAR_MUSIC_FLAG == 0) {
-				System.out.println("YES it is " + REGULAR_MUSIC_FLAG);
+				System.out.println(REGULAR_MUSIC_FLAG);
 				FIGHT_MUSIC_FLAG = 0;
 				FIGHT_MUSIC.StopMusic();
 				
@@ -234,8 +234,7 @@ public class Player {
 			{
 				if (wall.name == "tim") {
 					if (obtainedMaple) {
-						ImagePane.main("How's it going, eh?\n"
-								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null, this);
+						ImagePane.main("YOU WIN, eh?\n", "SUCCESSFUL DELIVERY!", null, this,new ImageIcon("res/winScreen.png"));
 						GamePanel gpane = new GamePanel(panel.frame, 1);
 						System.exit(0);
 					}
@@ -276,7 +275,7 @@ public class Player {
 		lives --;
 		if (lives <= 0) {
 			ImagePane.main("How's it going, eh?\n"
-					+ "See you on the other side i guess...\n", "GAME OVER", null, this);
+					+ "See you on the other side i guess...\n", "GAME OVER", null, this, new ImageIcon("res/justin.png"));
 			System.exit(0);
 			gameOver = true;
 		}

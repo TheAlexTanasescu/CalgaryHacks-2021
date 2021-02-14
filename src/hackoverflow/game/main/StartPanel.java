@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
@@ -48,7 +49,7 @@ public class StartPanel  extends javax.swing.JPanel {
 	    add(b, gb);
 	    add(b1, gb);
 	    
-	    ImagePane.main("Press Maply's nose to Start", "Start", null, null);
+	    ImagePane.main("Press Maply's nose to Start", "Start", null, null, new ImageIcon("res/justin.png"));
 	    try {
 			background = ImageIO.read(new File("res/GameIcon2.png"));
 		} catch (IOException e1) {

@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 import hackoverflow.game.main.GamePanel;
 
-public abstract class MobAbstract {
+public class MobAbstract {
 
 	// name of the mob
 	private String mobName;

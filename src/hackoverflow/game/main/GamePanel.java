@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.imageio.ImageIO;
 
-
+import GameMob.MapleSyrup;
 import GameMob.Mob;
 import GameMob.PolarBear;
 
@@ -21,11 +22,12 @@ import GameMob.PolarBear;
 public class GamePanel extends javax.swing.JPanel implements ActionListener {
 
 	public ArrayList<Wall> walls = new ArrayList<>();
-	ArrayList<Ladder> ladders = new ArrayList<>();
-	ArrayList<Mob> mobs = new ArrayList<>();
-	ArrayList<Icicle> icicles = new ArrayList<>();
+	public ArrayList<Ladder> ladders = new ArrayList<>();
+	public ArrayList<Mob> mobs = new ArrayList<>();
+	public ArrayList<Icicle> icicles = new ArrayList<>();
+	Wall timH;
 	
-	Player player;
+	public Player player;
 	int cameraX; //create camera
 	Timer gameTimer;
 	Image lvl1Png;
@@ -37,6 +39,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	public GamePanel() {
 		pane = 0;
 		player = new Player(600, 500, this);
+		
 		initMobs();
 		
 		try {
@@ -102,11 +105,16 @@ public GamePanel(int i) {
 	private void initMobs() {
 		
 		//Lvl 1 bear mob
-		mobs.add(new PolarBear("Bob", 20, 440, 295, this, "res/bear.png", "res/bearLeft.png"));
+
+		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
+		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
 		
 	}
 	
+	
 	public void makeWalls(int offset) {
+		walls.add(new TimHortons(1150, 0, 200, 200, "tim"));
+		
 		for(int i = 50; i < 1400; i += 50) {
 			walls.add(new Wall(i, 600, 50, 50));
 		}
@@ -226,7 +234,7 @@ public GamePanel(int i) {
 //		g.drawImage(lvl1TreePng, 220 - cameraX, 150, 160, 200, null);
 
 		//player.draw(gtd);
-		
+		//gtd.fillRect((int)timHortons.getWidth(), (int)timHortons.getHeight(), (int)timHortons.getX(), (int) timHortons.getY());
 		for(Wall wall: walls) wall.draw(gtd);
 		for(Ladder ladder: ladders) ladder.draw(gtd);
 		for(Mob mob: mobs) mob.draw(gtd);

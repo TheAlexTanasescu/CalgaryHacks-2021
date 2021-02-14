@@ -24,7 +24,7 @@ public class StartPanel  extends javax.swing.JPanel {
 	
 	public StartPanel(JFrame frame) {
 		setLayout( new GridBagLayout() );
-		JButton b = new JButton("Start");  
+		JButton b = new JButton("Play");  
 	    b.addActionListener(new ActionListener() {  
 	    	public void actionPerformed(ActionEvent e) {  
 	            frame.dispose();
@@ -45,7 +45,7 @@ public class StartPanel  extends javax.swing.JPanel {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
 		
-		g.drawImage(background, 0, 0, 1280, 720, null);
+		gtd.drawImage(background, 0, 0, 1280, 720, null);
 
 
 	}

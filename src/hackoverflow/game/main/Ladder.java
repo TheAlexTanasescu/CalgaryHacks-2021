@@ -25,9 +25,8 @@ public class Ladder
 	{
 		gtd.setColor(Color.ORANGE);
 		gtd.drawRect(x, y, width, height);
-		gtd.setColor(Color.ORANGE);
+		gtd.setColor(Color.cyan);
 		//gtd.fillRect(x+1, y+1, width-2, height-2);
-		
 	}
 	
 	public void set(int cameraX) {

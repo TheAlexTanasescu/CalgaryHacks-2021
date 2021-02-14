@@ -57,6 +57,7 @@ public class PolarBear extends Mob {
 		
 		xOffset = xOffset += xspeed;
 	}
+	
 		
 }
 	

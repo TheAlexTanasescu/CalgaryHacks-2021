@@ -7,8 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import javamusicthing.MusicTime;
+
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import  javamusicthing.musictime;
 
 
 
@@ -17,7 +19,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		String MENU_TRACK = "res/menu.wav";
-		musictime MainMenu = new musictime();
+		MusicTime MainMenu = new MusicTime();
 		
 		StartFrame startFrame = new StartFrame();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -45,7 +47,14 @@ public class Game {
 		frame.setResizable(false);
 		frame.setTitle("HackOverflow");
 		frame.setVisible(true);
-		ImagePane.main(args);
+		ImagePane.main("Hello there, eh, sorry to bother you\n"
+				+ "I'm Justin Beaver\n"
+				+ "I'll help you throughout the game\n"
+				+ "\n"
+				+ "Press A and D to go left and right\n"
+				+ "Press W to jump and climb ladders\n"
+				+ "\n"
+				, "Tutorial", args);
 		
 		//OptionPaneExample.main(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

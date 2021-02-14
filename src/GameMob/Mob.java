@@ -77,7 +77,7 @@ public abstract class Mob {
 		hitBox.x = x;
 	}
 	
-	private void destroyMob() {
+	protected void destroyMob() {
 		isAlive = false;
 		lblMob.setVisible(false);
 	}
@@ -101,7 +101,6 @@ public abstract class Mob {
 			gtd.setColor(Color.black);
 		    gtd.fillRect(x, y, width, 5);
 		    gtd.setColor(Color.red);
-		    System.out.println("hp: " + hp);
 		    gtd.fillRect(x, y, (width * hp) / maxHp, 5);
 		}
 	}

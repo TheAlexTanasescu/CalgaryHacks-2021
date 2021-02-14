@@ -1,10 +1,6 @@
  package hackoverflow.game.main;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class MainFrame extends javax.swing.JFrame {
 	public MainFrame() {

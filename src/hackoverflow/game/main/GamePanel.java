@@ -28,12 +28,14 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	int cameraX; //create camera
 	Timer gameTimer;
 	Image lvl1Png;
+	Image lvl1TreePng;
 	
 	public GamePanel() {
 		
 		player = new Player(600, 400, this);
 		try {
 			lvl1Png = ImageIO.read(new File("Hackathon 2021 Assets/BG.png"));
+			lvl1TreePng = ImageIO.read(new File("Hackathon 2021 Assets/Tree_2.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -119,7 +121,8 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
 		
-		g.drawImage(lvl1Png, 50 - cameraX, -70, 1280, 720, null);
+		g.drawImage(lvl1Png, 70 - cameraX, -70, 1280, 720, null);
+		g.drawImage(lvl1TreePng, 70 - cameraX, -70, 1280, 720, null);
 
 		player.draw(gtd);
 		

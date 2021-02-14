@@ -28,8 +28,10 @@ public class Game {
 		
 		frame.setResizable(false);
 		frame.setTitle("HackOverflow");
+		
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		//OptionPaneExample.main(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		

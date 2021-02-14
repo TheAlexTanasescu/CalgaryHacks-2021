@@ -55,6 +55,7 @@ public class Player {
 		
         width = player0.getIconWidth();
         height = player0.getIconHeight();
+
         
         hitBox = new Rectangle(x, y, width, height);
 	}

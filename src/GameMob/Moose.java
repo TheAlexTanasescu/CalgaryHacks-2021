@@ -1,25 +1,16 @@
 package GameMob;
 
-public class Moose extends MobAbstract{
+import hackoverflow.game.main.GamePanel;
 
-	public Moose(String Name) {
-		super(Name);
-		
-		this.Health = 300;
-		this.hostility = 2;
-		
-		
-		
-		
+public class Moose extends Mob{
+
+	public Moose(String name, int x, int y, GamePanel panel, String mobImgPath) {
+		super(name, x, y, panel, mobImgPath);
 		// TODO Auto-generated constructor stub
 	}
-
-	
 		
 		
-		
-		
-	}
+}
 	
 	
 	

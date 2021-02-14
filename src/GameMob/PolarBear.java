@@ -1,25 +1,17 @@
 package GameMob;
 
-public class PolarBear extends MobAbstract{
+import hackoverflow.game.main.GamePanel;
 
-	public PolarBear(String Name) {
-		super(Name);
-		
-		this.Health = 500;
-		this.hostility = 2;
-		
-		
-		
-		
+public class PolarBear extends Mob{
+
+	public PolarBear(String name, int x, int y, GamePanel panel, String mobImgPath) {
+		super(name, x, y, panel, mobImgPath);
 		// TODO Auto-generated constructor stub
 	}
 
-	
 		
 		
-		
-		
-	}
+}
 	
 	
 	

@@ -18,7 +18,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	
 	public GamePanel() {
 		
-		player = new Player(400, 300, this);
+		player = new Player(100, 400, this);
 		
 		reset(); //Intitalize walls with reset for ease
 
@@ -39,32 +39,42 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	
 
 	public void makeWalls(int offset) {
-		for(int i = 50; i < 1350; i += 50)
-		{
+
+		for(int i = 50; i < 1400; i += 50) {
 			walls.add(new Wall(i, 600, 50, 50));
 		}
 		
-		walls.add(new Wall(50, 550, 50, 50));
-		walls.add(new Wall(50, 500, 50, 50));
-
-		walls.add(new Wall(600, 500, 50, 50));		
-		walls.add(new Wall(600, 550, 50, 50));
-
+		for(int i = 50; i < 1400; i += 50) {
+			walls.add(new Wall(i, 350, 50, 50));
+		}
 		
-
-
-//		walls.add(new Wall(600, 500, 50, 50));
-//		walls.add(new Wall(600, 450, 50, 50));
-//		walls.add(new Wall(50, 550, 50, 50));
-//		walls.add(new Wall(450, 550, 50, 50));
+		for(int i = 50; i < 1400; i += 50) {
+			if(i != 150) {
+				walls.add(new Wall(i, 50, 50, 50));
+			}
+		}
+		
+		for(int i = -200; i < 600; i += 50) {
+			walls.add(new Wall(50, i, 50, 50));
+		}
+		
+		for(int i = -200; i < 600; i += 50) {
+			walls.add(new Wall(1350, i, 50, 50));
+		}
+		
+		//Obstacles floor 1
+		walls.add(new Wall(500, 550, 50, 50)); //small mound 1
+		walls.add(new Wall(550, 550, 50, 50)); //small mound 1
+		walls.add(new Wall(850, 550, 50, 50)); //large mound 1
+		walls.add(new Wall(850, 500, 50, 50)); //large mound 1
 
 	}
 
 
 	public void reset() {
-		player.x = 200;
-		player.y = 150;
-		cameraX = 150;
+		player.x = 100;
+		player.y = 500;
+		cameraX = 0;
 		player.xspeed = 0;
 		player.yspeed = 0;
 		walls.clear();

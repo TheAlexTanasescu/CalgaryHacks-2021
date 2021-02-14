@@ -13,6 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 import GameMob.MapleSyrup;
 import GameMob.Mob;
@@ -36,7 +37,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	Image lvl1TreePng;
 	int pane;
 	
-	public GamePanel() {
+	public GamePanel(JFrame frame) {
 		pane = 0;
 		player = new Player(600, 500, this);
 		
@@ -69,7 +70,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		}, 0, 17);
 	}
 	
-public GamePanel(int i) {
+public GamePanel(JFrame frame, int i) {
 		pane = 1;
 		
 		player = new Player(600, 500, this);
@@ -107,7 +108,7 @@ public GamePanel(int i) {
 		//Lvl 1 bear mob
 
 		mobs.add(new MapleSyrup("maple", 1, 440, 310, this, "res/maple.png", "res/maple.png"));
-		mobs.add(new PolarBear("Bob", 50, 550, 295, this, "res/bear.png", "res/bearLeft.png"));
+		mobs.add(new PolarBear("Bob", 50, 550, 315, this, "res/bear.png", "res/bearLeft.png"));
 		
 	}
 	

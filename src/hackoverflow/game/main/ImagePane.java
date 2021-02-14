@@ -7,10 +7,15 @@ public class ImagePane
 {
 	
 
-	public static void main(String message, String title, String[] args)
+	public static void main(String message, String title, String[] args, Player p)
 	{
 		ImageIcon icon = new ImageIcon("res/justin.png");
 		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, icon);
-		
+		if (p!= null) {
+			p.keyLeft = false;
+			p.keyRight = false;
+			p.keyDown = false;
+			p.keyUp = false;
+		}
 	}
 }

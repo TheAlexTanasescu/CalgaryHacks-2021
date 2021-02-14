@@ -54,7 +54,7 @@ public class Game {
 				+ "Press A and D to go left and right\n"
 				+ "Press W to jump and climb ladders\n"
 				+ "\n"
-				, "Tutorial", args);
+				, "Tutorial", args, null);
 		
 		//OptionPaneExample.main(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

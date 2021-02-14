@@ -23,6 +23,6 @@ public class MapleSyrup extends Mob {
 		super.destroyMob();
 		super.panel.player.obtainedMaple = true;
 		ImagePane.main("How's it going, eh?\n"
-				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null);
+				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null, panel.player);
 	}
 }

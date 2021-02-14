@@ -150,7 +150,7 @@ public class Player {
 						+ "Jump on him with your skates and \n"
 						+ "your hockey stick to hurt him. \n"
 						+ "Be careful not get bitten \n"
-						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null);
+						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null, this);
 				FIGHT_MUSIC_FLAG = 1;
 				REGULAR_MUSIC.StopMusic();
 				REGULAR_MUSIC_FLAG = 0;
@@ -226,7 +226,7 @@ public class Player {
 				if (wall.name == "tim") {
 					if (obtainedMaple) {
 						ImagePane.main("How's it going, eh?\n"
-								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null);
+								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null, this);
 						System.exit(0);
 					}
 
@@ -266,7 +266,7 @@ public class Player {
 		lives --;
 		if (lives <= 0) {
 			ImagePane.main("How's it going, eh?\n"
-					+ "See you on the other side i guess...\n", "GAME OVER", null);
+					+ "See you on the other side i guess...\n", "GAME OVER", null, this);
 			System.exit(0);
 			gameOver = true;
 		}

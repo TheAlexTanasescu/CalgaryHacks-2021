@@ -24,7 +24,7 @@ public class StartPanel  extends javax.swing.JPanel {
 	
 	public StartPanel(JFrame frame) {
 		setLayout( new GridBagLayout() );
-		JButton b = new JButton("Start");  
+		JButton b = new JButton("Play");  
 	    b.addActionListener(new ActionListener() {  
 	    	public void actionPerformed(ActionEvent e) {  
 	            frame.dispose();

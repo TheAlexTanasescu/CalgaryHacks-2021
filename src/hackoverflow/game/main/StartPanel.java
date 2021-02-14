@@ -33,9 +33,9 @@ public class StartPanel  extends javax.swing.JPanel {
 	    });
 	    add(b, new GridBagConstraints());
 	    
-	    
+	    ImagePane.main("Press Maply's nose to Start", "Start", null, null);
 	    try {
-			background = ImageIO.read(new File("res/GameIcon.png"));
+			background = ImageIO.read(new File("res/GameIcon2.png"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

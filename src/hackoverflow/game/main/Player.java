@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import GameMob.Mob;
@@ -34,6 +35,7 @@ public class Player {
 	public boolean keyUp;
 	public boolean keyDown;
 	public boolean keySpacebar;
+
 	
 	
 	// hitbox that is used to hit enemies with the hockey stick
@@ -121,7 +123,11 @@ public class Player {
 		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
 		if (xspeed > 7) xspeed = 7;
-		if (xspeed < -7) xspeed = -7;
+		if (xspeed < -7)
+		{
+			xspeed = -7;
+			System.out.println("X" + hitBox.x + "Y" + hitBox.y);		
+		}
 
 		if (keyUp)
 		{
@@ -140,6 +146,7 @@ public class Player {
 			hitBox.y --;
 			
 			if (hitBox.y <= 299 && FIGHT_MUSIC_FLAG == 0 && hitBox.y > 90) {
+				/*
 				ImagePane.main("How's it going, eh\n"
 						+ "See that mean ol' polar bear over there?\n"
 						+ "Thats Barry the Polar Bear.\n"
@@ -151,6 +158,8 @@ public class Player {
 						+ "your hockey stick to hurt him. \n"
 						+ "Be careful not get bitten \n"
 						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null, this);
+						+ "I'll be right behind you the whole time.", "Tutorial Part 2", null);
+						*/
 				FIGHT_MUSIC_FLAG = 1;
 				REGULAR_MUSIC.StopMusic();
 				REGULAR_MUSIC_FLAG = 0;
@@ -227,7 +236,10 @@ public class Player {
 					if (obtainedMaple) {
 						ImagePane.main("How's it going, eh?\n"
 								+ "See you on the next level!\n", "SUCCESSFUL DELIVERY!", null, this);
-						System.exit(0);
+						GamePanel gpane = new GamePanel(panel.frame, 1);
+						
+						panel.frame.add(gpane);
+						//dpanel.frame.remove(panel);
 					}
 
 				}

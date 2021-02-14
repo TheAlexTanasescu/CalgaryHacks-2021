@@ -23,8 +23,8 @@ public class Wall
 	{
 		gtd.setColor(Color.BLACK);
 		gtd.drawRect(x, y, width, height);
-		gtd.setColor(Color.WHITE);
-		//gtd.fillRect(x+1, y+1, width-2, height-2);
+		gtd.setColor(Color.cyan);
+		gtd.fillRect(x+1, y+1, width-2, height-2);
 		
 		
 		

@@ -54,6 +54,14 @@ public class Game {
 				+ "Press A and D to go left and right\n"
 				+ "Press W to jump and climb ladders\n"
 				+ "\n"
+				+ "There's a lot of polar bears around these parts, eh?\n"
+				+ "Jump on them with your skates and hockey stick to defeat them\n"
+				+ "\n"
+				+ "You can earn maple syrup from polar bears if you beat them\n"
+				+ "When you get maple syrup, trade it quickly at Timmy's for a double double\n"
+				+ "to get energy for the next level\n"
+				+ "\n"
+				+ "Good luck, eh"
 				, "Tutorial", args);
 		
 		//OptionPaneExample.main(null);

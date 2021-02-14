@@ -73,8 +73,12 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	}
 	
 	public void makeLadders(int offset) {		
-		for(int i = -200; i < 600; i += 50) {
+		for(int i = 350; i < 600; i += 50) {
 			ladders.add(new Ladder(1150, i, 50, 50));
+		}
+		
+		for(int i = 50; i < 350; i += 50) {
+			ladders.add(new Ladder(150, i, 50, 50));
 		}
 	}
 
@@ -90,10 +94,9 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D gtd = (Graphics2D) g;
-		
-		player.draw(gtd);
 		for(Wall wall: walls) wall.draw(gtd);
 		for(Ladder ladder : ladders) ladder.draw(gtd);
+		player.draw(gtd);
 	}
 	
 

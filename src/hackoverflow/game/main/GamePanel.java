@@ -122,7 +122,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		Graphics2D gtd = (Graphics2D) g;
 		
 		g.drawImage(lvl1Png, 70 - cameraX, -70, 1280, 720, null);
-		g.drawImage(lvl1TreePng, 70 - cameraX, -70, 1280, 720, null);
+		g.drawImage(lvl1TreePng, 220 - cameraX, 150, 160, 200, null);
 
 		player.draw(gtd);
 		

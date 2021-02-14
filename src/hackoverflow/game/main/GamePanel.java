@@ -200,6 +200,7 @@ public GamePanel(int i) {
 			ladders.add(new Ladder(165, i, 60, 50));
 		}
 		
+		walls.add(new Wall(1050, 560, 120, 50));
 		walls.add(new Wall(50, 160, 100, 40));
 		walls.add(new Wall(230, 160, 100, 40));
 		walls.add(new Wall(620, 160, 210, 40));

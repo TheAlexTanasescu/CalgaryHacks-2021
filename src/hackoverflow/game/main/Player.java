@@ -65,7 +65,7 @@ public class Player {
 			
 			for (Wall wall: panel.walls)
 			{
-				if (wall.hitBox.intersects(hitBox)) yspeed = -6;
+				if (wall.hitBox.intersects(hitBox)) yspeed = -8;
 			}
 			hitBox.y --;
 		}

@@ -27,6 +27,7 @@ public class Wall
 		//gtd.fillRect(x+1, y+1, width-2, height-2);
 		
 		
+		
 	}
 	
 	//Setting walls to move and hitbox

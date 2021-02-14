@@ -1,5 +1,7 @@
 package GameMob;
 
+import javax.swing.ImageIcon;
+
 import hackoverflow.game.main.GamePanel;
 import hackoverflow.game.main.ImagePane;
 
@@ -27,9 +29,9 @@ public class MapleSyrup extends Mob {
 				+ "Quickly! Trade the maple syrup at Timmy's for a coffee\n"
 				+ "The coffee will give you enough energy to go to the next level!", "Tutorial Part 3", null);
 		*/
-		System.out.println("You have obtained Maple!");
+		//System.out.println("You have obtained Maple!");
 		
 		ImagePane.main("How's it going, eh?\n"
-				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null, panel.player);
+				+ "Congrats on the Maple!\n", "OBTAINED MAPLE", null, panel.player,new ImageIcon("res/justin.png"));
 	}
 }

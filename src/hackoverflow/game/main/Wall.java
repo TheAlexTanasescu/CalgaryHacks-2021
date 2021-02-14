@@ -2,6 +2,8 @@ package hackoverflow.game.main;
 
 import java.awt.*;
 
+import javax.swing.ImageIcon;
+
 public class Wall 
 {
 	int x, y, width, height;

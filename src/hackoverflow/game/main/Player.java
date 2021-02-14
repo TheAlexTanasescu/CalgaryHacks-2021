@@ -69,10 +69,9 @@ public class Player {
 				hitBox.x -= xspeed;
 				while(!wall.hitBox.intersects(hitBox))
 					hitBox.x += Math.signum(xspeed);
-					hitBox.x -= Math.signum(xspeed);
-					xspeed = 0;
-					x = hitBox.x;
-					
+          hitBox.x -= Math.signum(xspeed);
+          xspeed = 0;
+          x = hitBox.x;
 			}
 		}
 		
@@ -86,10 +85,9 @@ public class Player {
 				hitBox.y -= yspeed;
 				while(!wall.hitBox.intersects(hitBox))
 					hitBox.y += Math.signum(yspeed);
-					hitBox.y -= Math.signum(yspeed);
-					yspeed = 0;
-					y = hitBox.y;
-					
+          hitBox.y -= Math.signum(yspeed);
+          yspeed = 0;
+          y = hitBox.y;
 			}
 		}
 

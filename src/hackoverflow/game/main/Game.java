@@ -7,9 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-
+import  javamusicthing.musictime;
 
 
 public class Game {
@@ -30,6 +29,17 @@ public class Game {
 		frame.setTitle("HackOverflow");
 		
 		frame.setVisible(true);
+		
+		// the regular background music location
+		String filepath = "res/regular.wav";
+		// music object used to play the music
+		musictime musicObject = new musictime();
+		// start the music
+		musicObject.PlayMusicLoop(filepath);
+		
+		
+		
+
 		//OptionPaneExample.main(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

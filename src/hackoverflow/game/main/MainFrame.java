@@ -1,9 +1,25 @@
- package hackoverflow.game.main;
+package hackoverflow.game.main;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JLabel;
+
+
 
 
 public class MainFrame extends javax.swing.JFrame {
+
 	public MainFrame() {
+		
+		try {
+			JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("Hackathon 2021 Assets/BG.png"))));
+		}
+		catch (IOException e) {
+			
+		}
+
 		GamePanel panel = new GamePanel();
 		panel.setLocation(0, 0);
 		panel.setSize(this.getSize());
@@ -15,7 +31,8 @@ public class MainFrame extends javax.swing.JFrame {
 		addKeyListener(new KeyChecker(panel));
 		
 		
-		
+
 	}
 	
 }
+

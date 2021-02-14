@@ -147,6 +147,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		if (e.getKeyChar() == 'w') player.keyUp = true;
 		if (e.getKeyChar() == 's') player.keyDown = true;
 		if (e.getKeyChar() == 'd') player.keyRight = true;
+		if (e.getKeyChar() == ' ') player.keySpacebar = true;
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -154,6 +155,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		if (e.getKeyChar() == 'w') player.keyUp = false;
 		if (e.getKeyChar() == 's') player.keyDown = false;
 		if (e.getKeyChar() == 'd') player.keyRight = false;
+		if (e.getKeyChar() == ' ') player.keySpacebar = false;
 	}
 	
 	@Override

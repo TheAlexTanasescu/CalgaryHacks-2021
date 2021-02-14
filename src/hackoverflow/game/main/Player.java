@@ -2,11 +2,12 @@ package hackoverflow.game.main;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import GameMob.Mob;
-
+import  javamusicthing.musictime;
 public class Player {
 
 	private GamePanel panel;
@@ -25,6 +26,14 @@ public class Player {
 	public boolean keyRight;
 	public boolean keyUp;
 	public boolean keyDown;
+	public boolean keySpacebar;
+	
+	
+	// hitbox that is used to hit enemies with the hockey stick
+	private Rectangle hockeyHitBox;
+	
+	
+	
 	
 	//Image stuff
 	private JLabel lblPlayer;
@@ -34,6 +43,24 @@ public class Player {
 	private ImageIcon player0l;
 	private ImageIcon player1l;
 	private ImageIcon player2l;
+	
+	
+	
+	// ALL OF THE MUSIC TRACKS IN THE GAME
+	String REGULAR_TRACK = "res/regular.wav";
+	String FIGHT_TRACK = "res/FIGHT.wav";
+	int FIGHT_MUSIC_FLAG = 0;
+	String MENU_TRACK = "res/menu.wav";
+	String GET_HIT_TRACK = "res/get_hit.wav";
+	String DEATH_TRACK = "res/death.wav";
+	String GAMEOVER_TRACK = "res/lose.wav";
+	String WIN_TRACK = "res/winn.wav";
+	String WACK_TRACK = "res/wack.wav";
+	
+	// music object used to play the music
+	musictime REGULAR_MUSIC_OBJECT = new musictime();
+	
+	
 	
 	
 	public Player(int x, int y, GamePanel panel) {
@@ -61,6 +88,8 @@ public class Player {
 
         
         hitBox = new Rectangle(x, y, width, height);
+     // start the music
+    	REGULAR_MUSIC_OBJECT.PlayMusicLoop(REGULAR_TRACK);
 	}
 	
 	public void set() {
@@ -80,6 +109,7 @@ public class Player {
 		if (keyUp)
 		{
 			hitBox.y = hitBox.y + 2;
+			System.out.println("Y position: "+ hitBox.y);
 			
 			for (Wall wall: panel.walls)
 			{
@@ -91,6 +121,20 @@ public class Player {
 			}
 			
 			hitBox.y --;
+			
+			if (hitBox.y == 289 && FIGHT_MUSIC_FLAG == 0) {
+				FIGHT_MUSIC_FLAG = 1;
+				REGULAR_MUSIC_OBJECT.StopMusic();
+				// music object used to play the music
+				musictime FIGHT_MUSIC = new musictime();
+				// start the music
+				FIGHT_MUSIC.PlayMusicLoop(FIGHT_TRACK);
+				
+				
+			}
+			
+			
+			
 		}
 		
 		yspeed += 0.3;
@@ -214,4 +258,17 @@ public class Player {
 	public void draw(Graphics2D gtd) {
 		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

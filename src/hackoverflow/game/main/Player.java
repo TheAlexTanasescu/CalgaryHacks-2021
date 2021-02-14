@@ -48,7 +48,7 @@ public class Player {
 
 		if (keyUp)
 		{
-			hitBox.y ++;
+			hitBox.y = hitBox.y + 2;
 			
 			for (Wall wall: panel.walls)
 			{
@@ -72,7 +72,6 @@ public class Player {
 					hitBox.x -= Math.signum(xspeed);
 					xspeed = 0;
 					x = hitBox.x;
-					
 			}
 		}
 		
@@ -89,8 +88,7 @@ public class Player {
 					hitBox.y -= Math.signum(yspeed);
 					yspeed = 0;
 					y = hitBox.y;
-					
-			}
+				}
 		}
 
 		if(xspeed > 0 && xspeed < 0.75) xspeed = 0;

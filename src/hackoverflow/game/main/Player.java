@@ -1,7 +1,9 @@
 package hackoverflow.game.main;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Player {
 
@@ -20,6 +22,9 @@ public class Player {
 	boolean keyUp;
 	boolean keyDown;
 	
+	//Image stuff
+	ImageIcon player;
+	JLabel lblPlayer;
 	
 	public Player(int x, int y, GamePanel panel) {
 		
@@ -29,7 +34,16 @@ public class Player {
 		
 		width = 50;
 		height = 100;
-		hitBox = new Rectangle(x, y, width, height);
+		
+		//hitBox = new Rectangle(x, y, width, height);
+		
+		//Image stuff
+		player = new ImageIcon("res/player0.png");
+		lblPlayer = new JLabel(player);     
+        width = player.getIconWidth();
+        height = player.getIconHeight();
+        
+        hitBox = new Rectangle(x, y, width, height);
 	}
 	
 	public void set() {
@@ -37,7 +51,6 @@ public class Player {
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		
-
 		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
@@ -67,11 +80,19 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.x -= xspeed;
+				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+
 				while(!wall.hitBox.intersects(hitBox))
 					hitBox.x += Math.signum(xspeed);
+
+					hitBox.x -= Math.signum(xspeed);
+					xspeed = 0;
+					x = hitBox.x;
+
           hitBox.x -= Math.signum(xspeed);
           xspeed = 0;
           x = hitBox.x;
+
 			}
 		}
 		
@@ -83,11 +104,14 @@ public class Player {
 			if(hitBox.intersects(wall.hitBox))
 			{
 				hitBox.y -= yspeed;
-				while(!wall.hitBox.intersects(hitBox))
-					hitBox.y += Math.signum(yspeed);
-          hitBox.y -= Math.signum(yspeed);
-          yspeed = 0;
-          y = hitBox.y;
+				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);					
+
+
+					hitBox.y -= Math.signum(yspeed);
+					yspeed = 0;
+					y = hitBox.y;
+
+
 			}
 		}
 
@@ -111,8 +135,9 @@ public class Player {
 	}
 	
 	public void draw(Graphics2D gtd) {
-		gtd.setColor(Color.BLACK);
-		gtd.fillRect(x, y, width, height);
+		//gtd.setColor(Color.BLACK);
+		//gtd.fillRect(x, y, width, height);
+		lblPlayer.getIcon().paintIcon(panel, gtd, x, y);
 		
 	}
 }

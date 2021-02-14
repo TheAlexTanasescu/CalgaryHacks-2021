@@ -68,6 +68,7 @@ public class GamePanel extends javax.swing.JPanel implements ActionListener {
 		walls.add(new Wall(850, 500, 50, 50)); //large mound 1
 	}
 
+
 	public void reset() {
 		player.x = 100;
 		player.y = 500;

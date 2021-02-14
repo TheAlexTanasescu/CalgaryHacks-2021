@@ -37,7 +37,6 @@ public class Player {
 		else if (keyLeft && !keyRight) xspeed --;
 		else if (keyRight && !keyLeft) xspeed ++;
 		
-
 		if (xspeed > 0 && xspeed < 0.75) xspeed = 0;
 		
 		if (xspeed < 0 && xspeed > -0.75) xspeed = 0;
@@ -68,11 +67,13 @@ public class Player {
 			{
 				hitBox.x -= xspeed;
 				while(!wall.hitBox.intersects(hitBox))hitBox.x += Math.signum(xspeed);				
+
+				while(!wall.hitBox.intersects(hitBox))
+					hitBox.x += Math.signum(xspeed);
+
 					hitBox.x -= Math.signum(xspeed);
 					xspeed = 0;
 					x = hitBox.x;
-					
-				
 			}
 		}
 		
@@ -85,11 +86,14 @@ public class Player {
 			{
 				hitBox.y -= yspeed;
 				while(!wall.hitBox.intersects(hitBox)) hitBox.y += Math.signum(yspeed);					
+
+				while(!wall.hitBox.intersects(hitBox))
+					hitBox.y += Math.signum(yspeed);
+
 					hitBox.y -= Math.signum(yspeed);
 					yspeed = 0;
 					y = hitBox.y;
-					
-				
+
 			}
 		}
 
@@ -98,14 +102,9 @@ public class Player {
 		
 		if(xspeed > 7) xspeed = 7;
 		if(xspeed < -7) xspeed = -7;
-		
-		if(keyUp) {
-			yspeed = -6;
-		}
-		yspeed += 0.3;
 
 		
-		x += xspeed;
+		panel.cameraX += xspeed;
 		y += yspeed;
 		
 		hitBox.x = x;

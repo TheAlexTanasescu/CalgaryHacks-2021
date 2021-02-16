@@ -23,6 +23,7 @@ Bad internet connection, time crunch and inexperience with AWT Framework
 
 ### How to play the game
 
+Note: This might not work if you don't have Java. To install Java click this link https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
 1) Download the zip file (by clicking the green code button and selecting "Download ZIP") or clone the repo by navigating (by using cd and ls) on command prompt (windows) or terminal (mac) to whatever directory you want and type in "git clone https://github.com/TheAlexTanasescu/CalgaryHacks-2021.git"
 2) Next, make sure you're in the file folder where the game is and click the jar file
 3) If the above doesn't work, navigate to the directory with terminal or command prompt and type in "java -jar How\ you\ doin\'\ eh.jar"

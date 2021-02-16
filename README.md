@@ -1,7 +1,6 @@
 # CalgaryHacks-2021
-## Project Name: How you doin' eh?
-## Team Name: Hack OverFlow
-## Group 15
+## Project Name: How you doin' eh? Team Name: Hack OverFlow
+
 
 
 ### What is our project

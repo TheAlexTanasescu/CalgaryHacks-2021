@@ -18,6 +18,10 @@ A Canada themed video game where the player has to fight polar bears and collect
 2) Initial level 1 Design: https://drive.google.com/file/d/1bp4PG9rnYTYfszulJqMNa_FO9nGnNZP6/view?usp=sharing 
 3) Initial level 2 Design: https://drive.google.com/file/d/16GOaqVWQw7BahtB9VySpfEDZ6VjipEC1/view?usp=sharing 
 
+### Devpost Submission
+
+You can take a look at our devpost submission here which also includes interview questions: https://devpost.com/software/how-you-doin-eh
+
 ### Challenges we faced
 Bad internet connection, time crunch and inexperience with AWT Framework
 
